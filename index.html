@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IoT and Information Engineering</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="iote-path.css">
+
+<style>
+body{
+  margin:0;
+  font-family:'Prompt',sans-serif;
+}
+
+/* ========= NAVBAR ========= */
+.navbar{
+  transition:0.4s;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.85),rgba(0,0,0,0));
+}
+.navbar.scrolled{
+  background:#1a0033;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* ========= HERO ========= */
+.hero{
+  height:100vh;
+  background:url("hero.jpg") center/cover no-repeat;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+}
+
+/* ========= SECTION BASE ========= */
+.section-dark{
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  color:white;
+  padding:100px 0;
+}
+
+/* ========= FEATURE BOX ========= */
+.feature-box{
+  padding:30px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.05);
+  transition:0.3s;
+}
+.feature-box:hover{
+  transform:translateY(-10px);
+  background:rgba(255,255,255,0.1);
+}
+
+/* ========= LAB IMAGES ========= */
+.lab-img{
+  border-radius:20px;
+  overflow:hidden;
+}
+.lab-img img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+}
+
+/* ========= TESTIMONIAL ========= */
+.testimonial{
+  font-style:italic;
+  max-width:700px;
+  margin:auto;
+}
+
+/* ========= PROJECT SHOWCASE ========= */
+.project-showcase{
+  background:linear-gradient(135deg,#120a26,#24144f,#1a1140);
+  color:white;
+  padding:100px 0;
+}
+
+.project-row-center{
+  justify-content:center;
+}
+
+.project-card{
+  max-width:360px;
+  margin:0 auto;
+  border-radius:20px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.06);
+  transition:0.3s;
+  box-shadow:0 10px 30px rgba(0,0,0,0.18);
+  height:100%;
+}
+
+.project-card:hover{
+  transform:translateY(-8px);
+  background:rgba(255,255,255,0.1);
+}
+
+.project-media{
+  width:100%;
+  height:220px;
+  background:rgba(255,255,255,0.05);
+  overflow:hidden;
+}
+
+.project-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.project-body{
+  padding:24px;
+  text-align:center;
+}
+
+.project-body h4{
+  font-weight:600;
+  margin-bottom:12px;
+}
+
+.project-body p{
+  color:rgba(255,255,255,0.82);
+  line-height:1.7;
+  min-height:72px;
+}
+
+.project-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.project-btn{
+  border:none;
+  border-radius:999px;
+  padding:10px 18px;
+  font-weight:500;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.project-btn-primary{
+  background:#ffd700;
+  color:#15072e;
+}
+
+.project-btn-primary:hover{
+  background:white;
+  color:#15072e;
+}
+
+.project-btn-outline{
+  background:transparent;
+  color:white;
+  border:1px solid rgba(255,255,255,0.18);
+}
+
+.project-btn-outline:hover{
+  background:rgba(255,255,255,0.08);
+  color:white;
+}
+
+/* ========= VIDEO MODAL ========= */
+.video-modal .modal-content{
+  background:#0f0c29;
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:18px;
+  color:white;
+}
+
+.video-frame{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  border-radius:14px;
+  overflow:hidden;
+  background:black;
+}
+
+.video-frame iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+@media (max-width:768px){
+  .project-media{
+    height:210px;
+  }
+
+  .project-body p{
+    min-height:auto;
+  }
+}
+
+/* ========= PROJECT SHOWCASE ========= */
+
+.project-showcase{
+  background:linear-gradient(135deg,#120a26,#24144f,#1a1140);
+  color:white;
+  padding:100px 0;
+}
+
+.project-video-card{
+  max-width:1000px;
+  margin:auto;
+  background:rgba(255,255,255,0.06);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.project-video-frame{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;
+  background:black;
+}
+
+.project-video-frame iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.project-video-body{
+  padding:26px;
+  text-align:center;
+}
+
+.project-video-body h4{
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.project-gallery{
+  margin-top:40px;
+}
+
+.project-thumb{
+  border-radius:16px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.06);
+  transition:.3s;
+  height:100%;
+}
+
+.project-thumb:hover{
+  transform:translateY(-6px);
+  background:rgba(255,255,255,0.1);
+}
+
+.project-thumb img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.project-thumb-body{
+  padding:16px;
+  text-align:center;
+}
+
+.project-thumb-body h6{
+  margin-bottom:8px;
+}
+
+.project-thumb-body p{
+  margin:0;
+  color:rgba(255,255,255,0.75);
+  font-size:.9rem;
+}
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle{
+  border:none;
+  border-radius:12px;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.12);
+  color:white;
+  font-size:1.1rem;
+  transition:.3s;
+}
+
+.theme-toggle:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.2);
+}
+
+/* ===== LIGHT MODE ===== */
+body.light-mode{
+  background:#f6f7fb;
+  color:#1a1a1a;
+}
+
+/* navbar */
+body.light-mode .navbar{
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
+
+body.light-mode .navbar-brand{
+  color:#5b2cff !important;
+  font-weight:600;
+}
+
+body.light-mode .nav-link{
+  color:#222 !important;
+}
+
+body.light-mode .theme-toggle{
+  background:#f1f2f6;
+  color:#222;
+  border:1px solid rgba(0,0,0,0.08);
+}
+
+/* hero */
+body.light-mode .hero::before{
+  background:rgba(255,255,255,0.38);
+}
+
+body.light-mode .hero h1,
+body.light-mode .hero h3{
+  color:white;
+  text-shadow:0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* dark sections become light */
+body.light-mode .section-dark{
+  background:linear-gradient(180deg,#ffffff 0%, #f7f8fc 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .section-dark h2,
+body.light-mode .section-dark h3,
+body.light-mode .section-dark h4,
+body.light-mode .section-dark h5,
+body.light-mode .section-dark p,
+body.light-mode .section-dark .lead{
+  color:#1a1a1a !important;
+}
+
+/* cards */
+body.light-mode .feature-box,
+body.light-mode .project-video-card,
+body.light-mode .project-thumb,
+body.light-mode .iote-path-shell,
+body.light-mode .iote-glass-card,
+body.light-mode .contact-card,
+body.light-mode .admission-card,
+body.light-mode .faculty-card,
+body.light-mode .detail-box,
+body.light-mode .section-space,
+body.light-mode .glass-box{
+  background:rgba(255,255,255,0.92) !important;
+  color:#1a1a1a !important;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 14px 30px rgba(0,0,0,0.08);
+}
+
+/* text in cards */
+body.light-mode .feature-box p,
+body.light-mode .project-video-body p,
+body.light-mode .project-thumb-body p,
+body.light-mode .section-subtitle,
+body.light-mode .iote-path-subtitle,
+body.light-mode .iote-match-copy,
+body.light-mode .contact-card a,
+body.light-mode .admission-card p,
+body.light-mode .faculty-expertise,
+body.light-mode .detail-box p,
+body.light-mode .detail-box li,
+body.light-mode .section-space p{
+  color:#444 !important;
+}
+
+/* headings */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6{
+  color:#151515;
+}
+
+/* buttons */
+body.light-mode .btn-warning,
+body.light-mode .project-btn-primary,
+body.light-mode .assessment-btn,
+body.light-mode .iote-primary-btn{
+  background:#ffd54a !important;
+  color:#1a1a1a !important;
+  border:none;
+}
+
+body.light-mode .project-btn-outline,
+body.light-mode .iote-secondary-btn{
+  border:1px solid rgba(0,0,0,0.12);
+  color:#222 !important;
+  background:#fff;
+}
+
+/* project section */
+body.light-mode .project-showcase{
+  background:linear-gradient(180deg,#f7f8fc 0%, #eef1f8 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .project-showcase h2,
+body.light-mode .project-showcase p{
+  color:#1a1a1a !important;
+}
+/* ===== IOTE PATH : LIGHT MODE FIX ===== */
+body.light-mode .iote-path-section{
+  background:linear-gradient(180deg,#f7f8fc 0%, #eef2f8 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .iote-path-shell{
+  background:rgba(255,255,255,0.92) !important;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 18px 36px rgba(0,0,0,0.08);
+}
+
+body.light-mode .iote-path-badge{
+  background:#f1ecff;
+  color:#5b2cff;
+  border:1px solid rgba(91,44,255,0.12);
+}
+
+body.light-mode .iote-path-title,
+body.light-mode .iote-question-text,
+body.light-mode .iote-result-title,
+body.light-mode .iote-card-title,
+body.light-mode #iote-analysis-title,
+body.light-mode #path-title,
+body.light-mode #result-badge,
+body.light-mode #iote-strength-title,
+body.light-mode #iote-match-title,
+body.light-mode #iote-chart-title{
+  color:#161616 !important;
+}
+
+body.light-mode .iote-path-subtitle,
+body.light-mode .iote-path-meta,
+body.light-mode .iote-path-question-count,
+body.light-mode #iote-analysis-subtitle,
+body.light-mode .iote-result-description,
+body.light-mode .iote-match-copy{
+  color:#555 !important;
+}
+
+body.light-mode .iote-question-card,
+body.light-mode .iote-glass-card{
+  background:#ffffff !important;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 12px 28px rgba(0,0,0,0.06);
+}
+
+body.light-mode .iote-answer-list button,
+body.light-mode .answer-btn{
+  background:#ffffff !important;
+  color:#1a1a1a !important;
+  border:1px solid rgba(91,44,255,0.15) !important;
+  box-shadow:0 8px 18px rgba(0,0,0,0.04);
+}
+
+body.light-mode .iote-answer-list button:hover,
+body.light-mode .answer-btn:hover{
+  background:#f4efff !important;
+  color:#2a1363 !important;
+  border-color:#7a0bdc !important;
+}
+
+body.light-mode .iote-progress{
+  background:#e9edf5 !important;
+}
+
+body.light-mode .iote-progress-fill{
+  background:linear-gradient(90deg,#7a0bdc,#42c6ff) !important;
+}
+
+body.light-mode .iote-primary-btn{
+  background:#ffd54a !important;
+  color:#1a1a1a !important;
+  border:none !important;
+}
+
+body.light-mode .iote-secondary-btn,
+body.light-mode .iote-restart-btn{
+  background:#ffffff !important;
+  color:#222 !important;
+  border:1px solid rgba(0,0,0,0.12) !important;
+}
+
+body.light-mode .iote-top-strengths,
+body.light-mode .iote-top-strengths *{
+  color:#222 !important;
+}
+
+body.light-mode .iote-lang-btn{
+  background:#ffffff;
+  color:#333;
+  border:1px solid rgba(0,0,0,0.12);
+}
+
+body.light-mode .iote-lang-btn.active{
+  background:#5b2cff;
+  color:#fff;
+  border-color:#5b2cff;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<div class="container">
+<a class="navbar-brand" href="index.html">IoT and Information Engineering</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="mainNavbar">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="academics.html">Academics</a></li>
+<li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+<li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
+<li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+  <button id="themeToggle" class="theme-toggle" type="button">☀️</button>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-content">
+<h1>Department of IoT and Information Engineering</h1>
+<h3>ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</h3>
+</div>
+</section>
+
+<!-- PROMO -->
+<section class="section-dark text-center">
+<div class="container">
+<h5 class="text-warning mb-3 fw-semibold">Now Open for Applications 2026</h5>
+<h2 class="fw-bold mb-3">เปิดรับสมัครนักศึกษาใหม่</h2>
+<p class="lead mb-4">
+ก้าวสู่โลกเทคโนโลยี IoT, AI และระบบสารสนเทศที่เชื่อมต่อโลกอนาคต
+</p>
+<a href="http://admission.reg.kmitl.ac.th/" target="_blank"
+class="btn btn-warning btn-lg px-5 py-3 shadow">
+สมัครเรียนตอนนี้
+</a>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="section-dark text-center">
+<div class="container">
+<h2 class="mb-5">Why Choose IOTE?</h2>
+<div class="row justify-content-center">
+<div class="col-md-4 mb-4 d-flex">
+<div class="feature-box w-100">
+<h4>🚀 Future Technology</h4>
+<p>เรียนรู้ IoT, AI และ Data System ที่ตอบโจทย์อุตสาหกรรมยุคใหม่</p>
+</div>
+</div>
+<div class="col-md-4 mb-4 d-flex">
+<div class="feature-box w-100">
+<h4>🤝 Dual Degree</h4>
+<p>โอกาสเรียน 2 ปริญญา เพิ่มศักยภาพระดับสากล</p>
+</div>
+</div>
+<div class="col-md-4 mb-4 d-flex">
+<div class="feature-box w-100">
+<h4>💼 Industry Ready</h4>
+<p>ทำโปรเจคจริง ร่วมกับบริษัทและภาคอุตสาหกรรม</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROJECT SHOWCASE -->
+
+<section class="project-showcase text-center">
+
+<div class="container">
+
+<h2 class="fw-bold mb-3">
+Featured Projects
+</h2>
+
+<p class="lead text-light opacity-75 mb-5">
+ผลงานและบรรยากาศการเรียนรู้ของภาควิชา IoT and Information Engineering
+</p>
+
+<!-- VIDEO -->
+
+<div class="project-video-card">
+
+<div class="project-video-frame">
+
+<iframe
+src="https://www.youtube.com/embed/Dt725fs-50g"
+title="IOTE Showcase"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<div class="project-video-body">
+
+<h4>IOTE Showcase</h4>
+
+<p>
+วิดีโอแนะนำผลงาน กิจกรรม และบรรยากาศการเรียนรู้ของภาควิชา
+</p>
+
+</div>
+</div>
+
+
+<!-- IMAGE GALLERY -->
+
+<div class="row g-4 project-gallery">
+
+<div class="col-md-4">
+
+<div class="project-thumb">
+
+<img src="000.jpg" alt="Project">
+
+<div class="project-thumb-body">
+
+<h6>Student Innovation</h6>
+<p>ตัวอย่างผลงานนักศึกษา</p>
+
+</div>
+</div>
+</div>
+
+
+<div class="col-md-4">
+
+<div class="project-thumb">
+
+<img src="1111.jpg" alt="Lab">
+
+<div class="project-thumb-body">
+
+<h6>IoT Laboratory</h6>
+<p>การทดลองและพัฒนาเทคโนโลยี</p>
+
+</div>
+</div>
+</div>
+
+
+<div class="col-md-4">
+
+<div class="project-thumb">
+
+<img src="222.jpg" alt="Project">
+
+<div class="project-thumb-body">
+
+<h6>Engineering Project</h6>
+<p>การพัฒนาโปรเจคด้าน IoT</p>
+
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- CTA -->
+<section class="section-dark text-center">
+<div class="container">
+<h2 class="mb-4">พร้อมเริ่มต้นอนาคตของคุณแล้วหรือยัง?</h2>
+<a href="http://admission.reg.kmitl.ac.th/" target="_blank"
+class="btn btn-lg btn-warning px-5 py-3 shadow">
+สมัครเรียนเลย
+</a>
+</div>
+</section>
+
+<!-- FIND YOUR IOTE PATH -->
+<section id="iote-path" class="iote-path-section">
+  <div class="container">
+    <div class="iote-path-shell">
+
+      <!-- Intro -->
+      <div id="iote-path-intro" class="iote-path-view active">
+        <div class="iote-path-badge" id="path-badge">Interactive Assessment</div>
+        <h2 class="iote-path-title" id="path-title">Find Your IOTE Path</h2>
+        <p class="iote-path-subtitle" id="path-subtitle">
+          Discover which area of IOTE matches your strengths through a short interactive assessment.
+        </p>
+
+        <div class="iote-path-meta">
+          <span id="path-meta-questions">10 Questions</span>
+          <span id="path-meta-language">Auto language detection</span>
+        </div>
+
+        <div class="iote-path-intro-actions">
+          <button class="btn iote-primary-btn" id="path-start-btn">Start Assessment</button>
+
+          <div class="iote-lang-switch">
+            <button type="button" class="iote-lang-btn active" data-lang="en">EN</button>
+            <button type="button" class="iote-lang-btn" data-lang="th">TH</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz -->
+      <div id="iote-path-quiz" class="iote-path-view">
+        <div class="iote-path-topbar">
+          <div class="iote-path-question-count" id="path-question-count">Question 1 / 10</div>
+          <div class="iote-path-mini-lang">
+            <button type="button" class="iote-lang-btn active" data-lang="en">EN</button>
+            <button type="button" class="iote-lang-btn" data-lang="th">TH</button>
+          </div>
+        </div>
+
+        <div class="iote-progress">
+          <div id="iote-progress-fill" class="iote-progress-fill"></div>
+        </div>
+
+        <div class="iote-question-card">
+          <h3 id="iote-question-text" class="iote-question-text"></h3>
+          <div id="iote-answer-list" class="iote-answer-list"></div>
+        </div>
+      </div>
+
+      <!-- Analysis -->
+      <div id="iote-path-analysis" class="iote-path-view">
+        <div class="iote-analysis-wrap">
+          <div class="iote-orb"></div>
+          <h3 id="iote-analysis-title">Analyzing your technology profile...</h3>
+          <p id="iote-analysis-subtitle">Building your personalized IOTE path</p>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="iote-path-result" class="iote-path-view">
+        <div class="iote-result-head">
+          <div class="iote-path-badge" id="result-badge">Your Result</div>
+          <h3 id="iote-result-title" class="iote-result-title"></h3>
+          <p id="iote-result-description" class="iote-result-description"></p>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-6">
+            <div class="iote-glass-card h-100">
+              <h4 id="iote-chart-title" class="iote-card-title">Strength Profile</h4>
+              <canvas id="iote-result-chart"></canvas>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="iote-glass-card h-100">
+              <h4 id="iote-strength-title" class="iote-card-title">Top Strengths</h4>
+              <div id="iote-top-strengths" class="iote-top-strengths"></div>
+
+              <h4 id="iote-match-title" class="iote-card-title mt-4">Why this matches IOTE</h4>
+              <p id="iote-match-copy" class="iote-match-copy"></p>
+
+              <div class="iote-result-actions">
+                <a href="academics.html" class="btn iote-primary-btn" id="iote-cta-academics">Explore Curriculum</a>
+                <a href="admission.html" class="btn iote-secondary-btn" id="iote-cta-admission">Admission Information</a>
+              </div>
+
+              <button class="btn iote-restart-btn mt-3" id="iote-restart-btn">Retake Assessment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="modal fade video-modal" id="videoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title">Project Video</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="video-frame">
+          <iframe
+            id="projectVideoFrame"
+            src=""
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="iote-path.js"></script>
+
+<script>
+window.addEventListener("scroll",function(){
+const navbar=document.querySelector(".navbar");
+if(window.scrollY>100){
+navbar.classList.add("scrolled");
+}else{
+navbar.classList.remove("scrolled");
+}
+});
+
+const videoModal = document.getElementById("videoModal");
+const videoFrame = document.getElementById("projectVideoFrame");
+
+if(videoModal){
+  videoModal.addEventListener("show.bs.modal", function(event){
+    const button = event.relatedTarget;
+    const videoUrl = button.getAttribute("data-video");
+    videoFrame.src = videoUrl + "?autoplay=1";
+  });
+
+  videoModal.addEventListener("hidden.bs.modal", function(){
+    videoFrame.src = "";
+  });
+}
+</script>
+
+<div id="iote-assistant-mount"></div>
+<link rel="stylesheet" href="assistant.css">
+<script src="routes.js"></script>
+<script src="knowledge-th.js"></script>
+<script src="knowledge-en.js"></script>
+<script src="assistant.js"></script>
+
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+function updateThemeIcon(){
+  if(document.body.classList.contains("light-mode")){
+    toggleBtn.textContent = "🌙";
+  }else{
+    toggleBtn.textContent = "☀️";
+  }
+}
+
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light-mode");
+}
+
+updateThemeIcon();
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if(document.body.classList.contains("light-mode")){
+    localStorage.setItem("theme","light");
+  }else{
+    localStorage.setItem("theme","dark");
+  }
+
+  updateThemeIcon();
+});
+</script>
+
+</script> 
+</body>
+</html>

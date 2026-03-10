@@ -1,0 +1,37 @@
+/* Section ไล่สีม่วง */
+.content-section {
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #0f0c29,
+    #302b63,
+    #24243e
+);
+}
+
+/* ทำให้ต่อจาก hero แบบ smooth */
+.hero {
+  margin-bottom: 0;
+}
+.promo-section {
+  background: linear-gradient(
+    135deg,
+    #0f0c29,
+    #302b63,
+    #24243e
+  );
+  padding: 120px 0;
+}
+
+.promo-section h2 {
+  letter-spacing: 1px;
+}
+
+.promo-section .btn {
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.promo-section .btn:hover {
+  transform: scale(1.08);
+}

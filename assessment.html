@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IOTE Diagnostic System</title>
+
+<link rel="stylesheet" href="assessment.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<!-- Language Selector -->
+<div class="lang-switch">
+  <button onclick="setLanguage('th')">TH</button>
+  <button onclick="setLanguage('en')">EN</button>
+</div>
+
+<!-- Start Screen -->
+<section id="start-screen" class="screen active">
+  <h1 class="glow-title">IOTE AI Diagnostic</h1>
+  <button class="primary-btn" onclick="startGame()">Start Diagnostic</button>
+</section>
+
+<!-- Game Screen -->
+<section id="game-screen" class="screen">
+  <div class="progress-bar">
+    <div id="progress-fill"></div>
+  </div>
+
+  <div id="question-container"></div>
+  <div id="answers-container"></div>
+</section>
+
+<!-- Analysis Screen -->
+<section id="analysis-screen" class="screen">
+  <h2>Analyzing Neural Response Pattern...</h2>
+</section>
+
+<!-- Result Screen -->
+<section id="result-screen" class="screen">
+  <h2 id="result-title"></h2>
+  <canvas id="resultChart"></canvas>
+  <div id="result-description"></div>
+  <button class="primary-btn" onclick="replay()">Replay</button>
+</section>
+
+<script src="assessment.js"></script>
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+function updateThemeIcon(){
+  if(document.body.classList.contains("light-mode")){
+    toggleBtn.textContent = "🌙";
+  }else{
+    toggleBtn.textContent = "☀️";
+  }
+}
+
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light-mode");
+}
+
+updateThemeIcon();
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if(document.body.classList.contains("light-mode")){
+    localStorage.setItem("theme","light");
+  }else{
+    localStorage.setItem("theme","dark");
+  }
+
+  updateThemeIcon();
+});
+</script>
+</body>
+</html>

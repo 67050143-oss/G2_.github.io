@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academics - IOTE</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:'Prompt',sans-serif;
+  color:white;
+  padding-top:88px;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at top left, rgba(140,0,255,0.16), transparent 24%),
+    radial-gradient(circle at top right, rgba(255,122,24,0.12), transparent 26%),
+    linear-gradient(180deg,#120022 0%, #17002d 45%, #1b0037 100%);
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  background:linear-gradient(to bottom,rgba(0,0,0,0.82),rgba(0,0,0,0.18));
+  backdrop-filter:blur(10px);
+  transition:.35s;
+}
+
+.navbar-brand,
+.nav-link{
+  color:white !important;
+}
+
+.nav-link{
+  opacity:.9;
+}
+
+.nav-link:hover{
+  opacity:1;
+}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;
+  width:100%;
+  height:460px;
+  overflow:hidden;
+}
+
+.hero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.58);
+  transform:scale(1.03);
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(18,0,34,0.86)),
+    radial-gradient(circle at center, rgba(120,0,255,0.10), transparent 42%);
+}
+
+.hero-content{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  width:min(900px,90%);
+}
+
+.hero-content h1{
+  font-size:3rem;
+  font-weight:700;
+  margin-bottom:10px;
+  letter-spacing:.4px;
+  text-shadow:0 8px 24px rgba(0,0,0,.4);
+}
+
+.hero-content p{
+  font-size:1.05rem;
+  color:rgba(255,255,255,.84);
+  margin-bottom:0;
+}
+
+/* ================= SHARED ================= */
+.section-title{
+  text-align:center;
+  margin-bottom:18px;
+  font-size:2rem;
+  font-weight:700;
+}
+
+.section-subtitle{
+  text-align:center;
+  color:rgba(255,255,255,.72);
+  max-width:760px;
+  margin:0 auto 50px;
+}
+
+.glass-box{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 18px 40px rgba(0,0,0,.22);
+  backdrop-filter:blur(10px);
+}
+
+/* ================= PROGRAM OVERVIEW ================= */
+.program-wrapper{
+  padding:80px 0 40px;
+}
+
+.program-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  padding:36px 24px;
+  text-align:center;
+  color:white;
+  min-height:245px;
+  transition:transform .35s ease, box-shadow .35s ease, filter .35s ease;
+  box-shadow:0 16px 36px rgba(0,0,0,.26);
+}
+
+.program-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,0));
+  pointer-events:none;
+}
+
+.program-card::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:24px;
+  padding:1px;
+  background:linear-gradient(135deg, rgba(255,255,255,.35), rgba(255,255,255,0));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  pointer-events:none;
+}
+
+.program-card:hover{
+  transform:translateY(-10px) scale(1.02);
+  filter:brightness(1.04);
+  box-shadow:0 24px 56px rgba(0,0,0,.38);
+}
+
+.program-card h5{
+  position:relative;
+  z-index:2;
+  font-size:1.45rem;
+  line-height:1.45;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.program-card p{
+  position:relative;
+  z-index:2;
+  color:rgba(255,255,255,.9);
+  margin-bottom:18px;
+}
+
+.card-buttons{
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.program-btn{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  transition:.3s;
+}
+
+.program-btn-light{
+  background:rgba(255,255,255,0.18);
+  color:white;
+  border:1px solid rgba(255,255,255,0.25);
+}
+
+.program-btn-light:hover{
+  background:white;
+  color:#15072e;
+}
+
+.yellow{
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,.18), transparent 28%),
+    linear-gradient(135deg,#e6c200 0%, #ffb300 60%, #ff9800 100%);
+}
+
+.orange{
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,.18), transparent 28%),
+    linear-gradient(135deg,#ff6a00 0%, #ff3d00 55%, #ff1744 100%);
+}
+
+.purple{
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,.18), transparent 28%),
+    linear-gradient(135deg,#7200ff 0%, #b300ff 58%, #ff008c 100%);
+}
+
+/* ================= DETAILS ================= */
+.detail-section{
+  padding:50px 0 110px;
+}
+
+.detail-box{
+  padding:42px;
+  border-radius:26px;
+  margin-bottom:36px;
+  scroll-margin-top:120px;
+}
+
+.detail-box h2{
+  font-size:1.7rem;
+  font-weight:700;
+  margin-bottom:12px;
+  color:#f5ccff;
+}
+
+.detail-box h5{
+  margin-top:28px;
+  margin-bottom:12px;
+  font-weight:600;
+  color:#ffd28c;
+}
+
+.detail-box p,
+.detail-box li{
+  color:rgba(255,255,255,.9);
+  line-height:1.9;
+}
+
+.detail-box ul{
+  padding-left:20px;
+}
+
+.detail-box li{
+  margin-bottom:10px;
+}
+
+/* ================= PDF PILLS ================= */
+.pdf-btn{
+  display:inline-block;
+  margin:8px 10px 10px 0;
+  padding:12px 22px;
+  border-radius:999px;
+  text-decoration:none;
+  background:linear-gradient(45deg,#ff9800,#ff4d00);
+  color:white;
+  font-weight:500;
+  transition:.3s;
+  box-shadow:0 12px 26px rgba(0,0,0,.18);
+}
+
+.pdf-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 30px rgba(0,0,0,.28);
+  color:white;
+}
+
+/* section 2 special selector cards */
+.dual-programs{
+  margin:28px 0 36px;
+}
+
+.dual-mini-card{
+  display:block;
+  text-decoration:none;
+  color:white;
+  padding:26px 20px;
+  border-radius:20px;
+  text-align:center;
+  min-height:150px;
+  transition:.35s;
+  box-shadow:0 14px 30px rgba(0,0,0,.2);
+}
+
+.dual-mini-card:hover{
+  transform:translateY(-8px);
+  color:white;
+  box-shadow:0 22px 40px rgba(0,0,0,.3);
+}
+
+.dual-mini-card h6{
+  font-size:1.1rem;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+.dual-mini-card p{
+  margin:0;
+  color:rgba(255,255,255,.85);
+}
+
+.mini-blue{
+  background:linear-gradient(135deg,#1a237e,#3949ab);
+}
+.mini-green{
+  background:linear-gradient(135deg,#00695c,#00bfa5);
+}
+.mini-red{
+  background:linear-gradient(135deg,#ff6a00,#ff1744);
+}
+
+/* ================= REVEAL ANIMATION ================= */
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:all .8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:992px){
+  .hero{
+    height:380px;
+  }
+
+  .hero-content h1{
+    font-size:2.4rem;
+  }
+}
+
+@media(max-width:768px){
+  body{
+    padding-top:78px;
+  }
+
+  .hero{
+    height:290px;
+  }
+
+  .hero-content h1{
+    font-size:1.9rem;
+  }
+
+  .hero-content p{
+    font-size:.95rem;
+  }
+
+  .program-card{
+    min-height:220px;
+    padding:30px 20px;
+  }
+
+  .program-card h5{
+    font-size:1.2rem;
+  }
+
+  .detail-box{
+    padding:28px 22px;
+    border-radius:20px;
+  }
+
+  .section-title{
+    font-size:1.6rem;
+  }
+}
+
+.program-gallery{
+margin-top:40px;
+}
+
+.program-gallery img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:14px;
+transition:.3s;
+}
+
+.program-gallery img:hover{
+transform:scale(1.04);
+}
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle{
+  border:none;
+  border-radius:12px;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.12);
+  color:white;
+  font-size:1.1rem;
+  transition:.3s;
+}
+
+.theme-toggle:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.2);
+}
+
+/* ===== LIGHT MODE ===== */
+body.light-mode{
+  background:#f6f7fb;
+  color:#1a1a1a;
+}
+
+/* navbar */
+body.light-mode .navbar{
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
+
+body.light-mode .navbar-brand{
+  color:#5b2cff !important;
+  font-weight:600;
+}
+
+body.light-mode .nav-link{
+  color:#222 !important;
+}
+
+body.light-mode .theme-toggle{
+  background:#f1f2f6;
+  color:#222;
+  border:1px solid rgba(0,0,0,0.08);
+}
+
+/* hero */
+body.light-mode .hero::before{
+  background:rgba(255,255,255,0.38);
+}
+
+body.light-mode .hero h1,
+body.light-mode .hero h3{
+  color:white;
+  text-shadow:0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* dark sections become light */
+body.light-mode .section-dark{
+  background:linear-gradient(180deg,#ffffff 0%, #f7f8fc 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .section-dark h2,
+body.light-mode .section-dark h3,
+body.light-mode .section-dark h4,
+body.light-mode .section-dark h5,
+body.light-mode .section-dark p,
+body.light-mode .section-dark .lead{
+  color:#1a1a1a !important;
+}
+
+/* cards */
+body.light-mode .feature-box,
+body.light-mode .project-video-card,
+body.light-mode .project-thumb,
+body.light-mode .iote-path-shell,
+body.light-mode .iote-glass-card,
+body.light-mode .contact-card,
+body.light-mode .admission-card,
+body.light-mode .faculty-card,
+body.light-mode .detail-box,
+body.light-mode .section-space,
+body.light-mode .glass-box{
+  background:rgba(255,255,255,0.92) !important;
+  color:#1a1a1a !important;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 14px 30px rgba(0,0,0,0.08);
+}
+
+/* text in cards */
+body.light-mode .feature-box p,
+body.light-mode .project-video-body p,
+body.light-mode .project-thumb-body p,
+body.light-mode .section-subtitle,
+body.light-mode .iote-path-subtitle,
+body.light-mode .iote-match-copy,
+body.light-mode .contact-card a,
+body.light-mode .admission-card p,
+body.light-mode .faculty-expertise,
+body.light-mode .detail-box p,
+body.light-mode .detail-box li,
+body.light-mode .section-space p{
+  color:#444 !important;
+}
+
+/* headings */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6{
+  color:#151515;
+}
+
+/* buttons */
+body.light-mode .btn-warning,
+body.light-mode .project-btn-primary,
+body.light-mode .assessment-btn,
+body.light-mode .iote-primary-btn{
+  background:#ffd54a !important;
+  color:#1a1a1a !important;
+  border:none;
+}
+
+body.light-mode .project-btn-outline,
+body.light-mode .iote-secondary-btn{
+  border:1px solid rgba(0,0,0,0.12);
+  color:#222 !important;
+  background:#fff;
+}
+
+/* project section */
+body.light-mode .project-showcase{
+  background:linear-gradient(180deg,#f7f8fc 0%, #eef1f8 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .project-showcase h2,
+body.light-mode .project-showcase p{
+  color:#1a1a1a !important;
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<div class="container">
+<a class="navbar-brand" href="index.html">IoT and Information Engineering</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="mainNavbar">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link active" href="academics.html">Academics</a></li>
+<li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+<li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
+<li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+  <button id="themeToggle" class="theme-toggle" type="button">☀️</button>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769" alt="">
+<div class="hero-content reveal">
+  <h1>Academic Programs</h1>
+  <p>Explore future-focused learning paths in IoT, Industrial Physics, and interdisciplinary innovation</p>
+</div>
+</section>
+
+<!-- PROGRAM CARDS -->
+<section class="program-wrapper">
+<div class="container">
+  <h2 class="section-title reveal">Programs Overview</h2>
+  <p class="section-subtitle reveal">
+    เลือกหลักสูตรที่ต้องการศึกษาเพิ่มเติม พร้อมเข้าถึงเอกสารหลักสูตรอย่างเป็นทางการได้ทันที
+  </p>
+
+  <div class="row text-center g-4">
+    <div class="col-md-4 reveal">
+      <div class="program-card yellow">
+        <h5>วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที</h5>
+        <p>[ปรับปรุง 2569]</p>
+        <div class="card-buttons">
+          <a href="#prog1" class="program-btn program-btn-light">ดูรายละเอียด</a>
+          <a href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view" target="_blank" class="program-btn program-btn-light">หลักสูตรวิศวะไอโอที</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 reveal">
+      <div class="program-card orange">
+        <h5>Dual Degree<br>B.Eng IoT + B.Sc Industrial Physics</h5>
+        <div class="card-buttons">
+          <a href="#prog2" class="program-btn program-btn-light">ดูรายละเอียด</a>
+          <a href="https://www.reg.kmitl.ac.th/curriculum/file/bachelor/01/DualIoTInformationIndustrialPhysics.pdf?curr=354" target="_blank" class="program-btn program-btn-light">หลักสูตร 2 ปริญญา</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 reveal">
+      <div class="program-card purple">
+        <h5>วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที<br>[หลักสูตรต่อเนื่อง]</h5>
+        <div class="card-buttons">
+          <a href="#prog3" class="program-btn program-btn-light">ดูรายละเอียด</a>
+          <a href="pdf/continuous-program.pdf" target="_blank" class="program-btn program-btn-light">หลักสูตรต่อเนื่อง</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- DETAILS -->
+<section class="detail-section">
+
+<!-- PROGRAM 1 -->
+<section id="prog1" class="container reveal">
+<div class="detail-box glass-box">
+<h2>วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที</h2>
+
+<a href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view" target="_blank" class="pdf-btn">
+หลักสูตรวิศวะไอโอที
+</a>
+
+<h5>ภาพรวมหลักสูตร</h5>
+<p>ภาพรวม: เน้นเรียน 4 แกนหลัก คือ Hardware (อุปกรณ์/วงจร), Software (เขียนโปรแกรม/แอปพลิเคชัน), Network (เครือข่ายสื่อสาร), และ Data/AI (ข้อมูล/ปัญญาประดิษฐ์)
+เจาะลึกรายชั้นปี (อ้างอิงหลักสูตรปรับปรุง พ.ศ. 2569):
+
+ปี 1: ปูพื้นฐานวิศวกรรมและไอโอที
+
+เรียนวิชาพื้นฐานวิทยาศาสตร์-คณิตศาสตร์, การเขียนโปรแกรมคอมพิวเตอร์ (Programming), พื้นฐานทางวิศวกรรมวิชาชีพ และความรู้เบื้องต้นเกี่ยวกับไอโอทีและสารสนเทศ
+
+ปี 2: เจาะลึกเทคนิคและเครื่องมือ
+
+เรียนรู้ระบบวงจรดิจิทัล, อิเล็กทรอนิกส์, เครือข่ายคอมพิวเตอร์ (Computer Networks), การเขียนโปรแกรมเชิงวัตถุ (OOP), และเครื่องมือทางวิศวกรรมสำหรับวิเคราะห์และออกแบบระบบ
+
+ปี 3: ประยุกต์ใช้และสร้างระบบขั้นสูง
+
+เน้นวิชาระบบสมองกลฝังตัว (Embedded Systems), การจัดการฐานข้อมูล, การสื่อสารข้อมูล, ความปลอดภัยทางไซเบอร์ (Cyber Security), และการวิเคราะห์ข้อมูลขั้นสูง ลงมือทำโปรเจกต์พัฒนาระบบ IoT ทั้งฮาร์ดแวร์และซอฟต์แวร์
+
+ปี 4: เตรียมพร้อมสู่อุตสาหกรรม (Capstone/Co-op)
+
+ทำโครงงานวิศวกรรม (Capstone Poject) หรือ สหกิจศึกษา (Co-operative Education) ปฏิบัติงานจริงในสถานประกอบการ และเรียนรู้หัวข้อเทคโนโลยีสมัยใหม่เพื่อก้าวสู่อาชีพวิศวกรมืออาชีพ</p>
+
+<h5>จุดเด่นของหลักสูตร</h5>
+<ul>
+<li>ทันต่อยุคสมัย: รองรับเทรนด์โลกอย่าง AI, Edge Computing, 5G, Smart City และ Industry 5.0</li>
+<li>ครบเครื่อง (Full Stack): รู้ทั้ง Hardware และ Software สามารถทำงานได้หลากหลาย ตั้งแต่สร้างอุปกรณ์เซนเซอร์ ไปจนถึงเขียนแอปพลิเคชันและทำระบบ Cloud</li>
+<li>เน้นปฏิบัติจริง: มีรายวิชาปฏิบัติการ (Lab) และโปรเจกต์ต่อเนื่องทุกปี เพื่อให้เกิดทักษะที่ใช้งานได้จริง (Hands-on Experience)</li>
+<li>โอกาสงานกว้างขวาง: สามารถเป็นได้ทั้ง IoT Engineer, Embedded System Engineer, Software Developer, Data Engineer, Network Engineer หรือแม้แต่ Startup เจ้าของนวัตกรรม</li>
+<li>Active Learning: เน้นการเรียนรู้แบบลงมือทำ ไม่ใช่แค่นั่งฟังเลกเชอร์ มี Workshop และกิจกรรมเสริมทักษะตลอดหลักสูตร</li>
+<li>ใกล้ชิดและเป็นกันเอง: มีระบบอาจารย์ที่ปรึกษาดูแลนักศึกษาอย่างใกล้ชิด และรุ่นพี่ช่วยแนะนำรุ่นน้อง (Mentorship)</li>
+<li>เชื่อมโยงอุตสาหกรรม: มีโอกาสได้ร่วมงานหรือฝึกงานกับบริษัทชั้นนำด้านเทคโนโลยี และเข้าร่วมการแข่งขันเวทีระดับประเทศ</li>
+</ul>
+
+<h5>ช่องทางรับสมัครและติดต่อ</h5>
+<ul>
+<li>เปิดรับสมัคร TCAS1 รอบ Portfolio
+วันสุดท้าย: 20 มกราคม 2569 (สำหรับรอบปัจจุบันตามที่ระบุ)
+ช่องทางสมัคร: https://admission.reg.kmitl.ac.th/</li>
+</ul>
+</div>
+</section>
+
+<!-- PROGRAM 2 -->
+<section id="prog2" class="container reveal">
+<div class="detail-box glass-box">
+<h2>Dual Degree Program</h2>
+
+<p style="margin-bottom:35px;color:rgba(255,255,255,.86);">
+เลือกดูรายละเอียดหลักสูตรที่เกี่ยวข้องกับโครงการ Dual Degree
+</p>
+
+<div class="row g-4 dual-programs">
+
+<div class="col-md-4">
+<a href="https://www.reg.kmitl.ac.th/curriculum/file/bachelor/05/IndustrialPhysics64edit2.pdf?curr=945" target="_blank" class="dual-mini-card mini-blue">
+<h6>หลักสูตรฟิสิกส์อุตสาหกรรม</h6>
+<p>B.Sc Industrial Physics</p>
+</a>
+</div>
+
+<div class="col-md-4">
+<a href="https://drive.google.com/file/d/1QwCpsDUdwfdnNp4ZKYXeEyMoTk7DBRXQ/view" target="_blank" class="dual-mini-card mini-green">
+<h6>หลักสูตรวิศวะไอโอที</h6>
+<p>B.Eng IoT Engineering</p>
+</a>
+</div>
+
+<div class="col-md-4">
+<a href="https://www.reg.kmitl.ac.th/curriculum/file/bachelor/01/DualIoTInformationIndustrialPhysics.pdf?curr=354" target="_blank" class="dual-mini-card mini-red">
+<h6>หลักสูตร 2 ปริญญา</h6>
+<p>Dual Degree Program</p>
+</a>
+</div>
+
+</div>
+
+<h5>ภาพรวมหลักสูตร</h5>
+<p>หลักสูตรควบสองปริญญา บูรณาการ IoT และ Industrial Physics เพื่อเพิ่มศักยภาพการแข่งขันระดับนานาชาติ</p>
+
+<h5>จุดเด่น</h5>
+<ul>
+<li>ได้รับ 2 ปริญญา</li>
+<li>เรียนกับผู้เชี่ยวชาญสองสาขา</li>
+<li>โอกาสทำงานระดับสากล</li>
+</ul>
+
+<h5>ตัวอย่างรายวิชา</h5>
+<ul>
+<li>Advanced Sensor Systems</li>
+<li>Smart Manufacturing</li>
+<li>Applied Physics for Industry</li>
+</ul>
+
+<h5>โอกาสอาชีพ</h5>
+<ul>
+<li>Smart Factory Engineer</li>
+<li>Research Engineer</li>
+<li>Technology Consultant</li>
+</ul>
+</div>
+</section>
+
+<!-- PROGRAM 3 -->
+<section id="prog3" class="container reveal">
+<div class="detail-box glass-box">
+<h2>วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที (ต่อเนื่อง)</h2>
+
+<a href="https://www.iote.kmitl.ac.th/%e0%b8%a7%e0%b8%a8-%e0%b8%9a-%e0%b8%a7%e0%b8%b4%e0%b8%a8%e0%b8%a7%e0%b8%81%e0%b8%a3%e0%b8%a3%e0%b8%a1%e0%b8%84%e0%b8%ad%e0%b8%a1%e0%b8%9e%e0%b8%b4%e0%b8%a7%e0%b9%80%e0%b8%95%e0%b8%ad%e0%b8%a3/" target="_blank" class="pdf-btn">
+หลักสูตรต่อเนื่อง
+</a>
+
+<h5>ภาพรวมหลักสูตร</h5>
+<p>หลักสูตร วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที (หลักสูตรต่อเนื่อง)
+
+“จาก ปวส. สู่ วิศวกรเต็มตัว ทันสมัยที่สุดด้วย AI, IoT และ Digital Technology”
+
+หลักสูตรนี้ถูกออกแบบมาเพื่อ Upgrade ผู้ที่มีวุฒิประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.) ให้ก้าวขึ้นเป็นวิศวกรที่มีทักษะระดับสูง รองรับยุค Digital Transformation อย่างแท้จริง โดยเน้นการเรียนที่ “ทำได้จริง” และ “พร้อมเข้าสู่อุตสาหกรรม”
+
+ชื่อปริญญาและสาขาวิชา
+
+           ชื่อเต็ม   (ภาษาไทย)        วิศวกรรมศาสตรบัณฑิต  สาขาวิศวกรรมคอมพิวเตอร์และไอโอที
+
+                     (ภาษาอังกฤษ)    Bachelor of Engineering Program in  Computer Engineering and IoT
+
+           ชื่อย่อ    (ภาษาไทย)        วศ.บ. วิศวกรรมคอมพิวเตอร์และไอโอที
+
+
+                     (ภาษาอังกฤษ)    B.Eng. Computer Engineering and IoT 
+
+จำนวนหน่วยกิตที่เรียนตลอดหลักสูตร : 118 หน่วยกิต หลักสูตรปริญญาตรีต่อเนื่อง 3 ปี </p>
+
+<h5>จุดเด่น</h5>
+<ul>
+<li>ต่อยอดทักษะเฉพาะทาง</li>
+<li>เรียนเข้มข้นแบบเร่งรัด</li>
+<li>เชื่อมโยงอุตสาหกรรมโดยตรง</li>
+</ul>
+
+<h5>ตัวอย่างรายวิชา</h5>
+<ul>
+<li>Advanced Networking</li>
+<li>Cyber Security</li>
+<li>Industrial IoT Applications</li>
+</ul>
+
+<h5>โอกาสอาชีพ</h5>
+<ul>
+<li>วิศวกรไอโอที (IoT Engineer)</li>
+<li>วิศวกรรมระบบสมองกลฝังตัว (Embedded System Engineer/Embedded Software Engineering)</li>
+<li>วิศวกรระบบสารสนเทศ (Information Engineer/IT Engineer)</li>
+<li>วิศวกรไอโอที (IoT Engineer)</li>
+<li>วิศวกรคอมพิวเตอร์ (Computer Engineer)</li>
+<li>โปรแกรมเมอร์ (Programmer)</li>
+<li>นักพัฒนาแอพพลิเคชัน (Application Developer)</li>
+<li>วิศวกรข้อมูล (Data Engineer)</li>
+<li>วิศวกรปัญญาประดิษฐ์ / การเรียนรู้ของเครื่อง (AI / ML Engineer)</li>
+</ul>
+
+
+</div>
+</section>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll(){
+  const trigger = window.innerHeight * 0.88;
+
+  reveals.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < trigger){
+      el.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+<div id="iote-assistant-mount"></div>
+<link rel="stylesheet" href="assistant.css">
+<script src="routes.js"></script>
+<script src="knowledge-th.js"></script>
+<script src="knowledge-en.js"></script>
+<script src="assistant.js"></script>
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+function updateThemeIcon(){
+  if(document.body.classList.contains("light-mode")){
+    toggleBtn.textContent = "🌙";
+  }else{
+    toggleBtn.textContent = "☀️";
+  }
+}
+
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light-mode");
+}
+
+updateThemeIcon();
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if(document.body.classList.contains("light-mode")){
+    localStorage.setItem("theme","light");
+  }else{
+    localStorage.setItem("theme","dark");
+  }
+
+  updateThemeIcon();
+});
+</script>
+</body>
+</html>

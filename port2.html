@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio 2 - เรียนดี ช้างเผือก</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body{margin:0;font-family:'Prompt',sans-serif;background:#15072e;color:white;}
+.hero{height:35vh;background:url("admission.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;text-align:center;}
+.hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.5);}
+.hero h1{position:relative;z-index:2;font-size:2.3rem;font-weight:600;}
+.section{padding:80px 0;}
+.info-box{max-width:980px;margin:auto;padding:50px;border-radius:15px;background:linear-gradient(135deg,#ff8a00,#2a1f9d);}
+.inner-box{background:#fff;color:black;padding:35px;border-radius:10px;line-height:1.8;}
+.inner-box h3{font-weight:600;margin-bottom:15px;}
+.back-btn{margin-bottom:25px;margin-right:10px;}
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle{
+  border:none;
+  border-radius:12px;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.12);
+  color:white;
+  font-size:1.1rem;
+  transition:.3s;
+}
+
+.theme-toggle:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.2);
+}
+
+/* ===== LIGHT MODE ===== */
+body.light-mode{
+  background:#f6f7fb;
+  color:#1a1a1a;
+}
+
+/* navbar */
+body.light-mode .navbar{
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
+
+body.light-mode .navbar-brand{
+  color:#5b2cff !important;
+  font-weight:600;
+}
+
+body.light-mode .nav-link{
+  color:#222 !important;
+}
+
+body.light-mode .theme-toggle{
+  background:#f1f2f6;
+  color:#222;
+  border:1px solid rgba(0,0,0,0.08);
+}
+
+/* hero */
+body.light-mode .hero::before{
+  background:rgba(255,255,255,0.38);
+}
+
+body.light-mode .hero h1,
+body.light-mode .hero h3{
+  color:white;
+  text-shadow:0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* dark sections become light */
+body.light-mode .section-dark{
+  background:linear-gradient(180deg,#ffffff 0%, #f7f8fc 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .section-dark h2,
+body.light-mode .section-dark h3,
+body.light-mode .section-dark h4,
+body.light-mode .section-dark h5,
+body.light-mode .section-dark p,
+body.light-mode .section-dark .lead{
+  color:#1a1a1a !important;
+}
+
+/* cards */
+body.light-mode .feature-box,
+body.light-mode .project-video-card,
+body.light-mode .project-thumb,
+body.light-mode .iote-path-shell,
+body.light-mode .iote-glass-card,
+body.light-mode .contact-card,
+body.light-mode .admission-card,
+body.light-mode .faculty-card,
+body.light-mode .detail-box,
+body.light-mode .section-space,
+body.light-mode .glass-box{
+  background:rgba(255,255,255,0.92) !important;
+  color:#1a1a1a !important;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 14px 30px rgba(0,0,0,0.08);
+}
+
+/* text in cards */
+body.light-mode .feature-box p,
+body.light-mode .project-video-body p,
+body.light-mode .project-thumb-body p,
+body.light-mode .section-subtitle,
+body.light-mode .iote-path-subtitle,
+body.light-mode .iote-match-copy,
+body.light-mode .contact-card a,
+body.light-mode .admission-card p,
+body.light-mode .faculty-expertise,
+body.light-mode .detail-box p,
+body.light-mode .detail-box li,
+body.light-mode .section-space p{
+  color:#444 !important;
+}
+
+/* headings */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6{
+  color:#151515;
+}
+
+/* buttons */
+body.light-mode .btn-warning,
+body.light-mode .project-btn-primary,
+body.light-mode .assessment-btn,
+body.light-mode .iote-primary-btn{
+  background:#ffd54a !important;
+  color:#1a1a1a !important;
+  border:none;
+}
+
+body.light-mode .project-btn-outline,
+body.light-mode .iote-secondary-btn{
+  border:1px solid rgba(0,0,0,0.12);
+  color:#222 !important;
+  background:#fff;
+}
+
+/* project section */
+body.light-mode .project-showcase{
+  background:linear-gradient(180deg,#f7f8fc 0%, #eef1f8 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .project-showcase h2,
+body.light-mode .project-showcase p{
+  color:#1a1a1a !important;
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>เรียนดี ช้างเผือก กลุ่มโรงเรียนสายสามัญ</h1>
+</section>
+
+<section class="section">
+    <div class="info-box">
+        <a href="portfolio.html" class="btn btn-light back-btn">← กลับไปหน้า Portfolio</a>
+        <a href="admission.html" class="btn btn-outline-light back-btn">กลับหน้า Admission</a>
+
+        <div class="inner-box">
+            <h3>คุณสมบัติ</h3>
+            <ul>
+                <li>รับผู้สมัครที่จบจาก รร. หลักสูตรแกนกลาง</li>
+                <li>รับผู้สมัครที่จบจาก รร. หลักสูตรนานาชาติ</li>
+                <li>โรงเรียนเป็นผู้รับรองชื่อนักเรียน โดยคณะทำงานแต่ละห้องให้เป็นนักเรียนที่มีผลการเรียนเฉลี่ยรวมอย่างน้อย 5 ภาคการศึกษา</li>
+                <li>ในระดับชั้นมัธยมศึกษาปีที่ 4-6 ผู้ที่มีคะแนนสูงที่สุด จะได้รับสิทธิ์ในการส่งรายชื่อก่อนเสมอ</li>
+            </ul>
+
+            <p><strong>จำนวนที่เปิดรับ</strong><br>30 คน (รับร่วมกัน)</p>
+
+            <p><strong>รายละเอียดเพิ่มเติม</strong><br>
+            <a href="https://new.reg.kmitl.ac.th/admission/#/" target="_blank">
+                https://new.reg.kmitl.ac.th/admission/#/
+            </a></p>
+        </div>
+    </div>
+</section>
+<div id="iote-assistant-mount"></div>
+<link rel="stylesheet" href="assistant.css">
+<script src="routes.js"></script>
+<script src="knowledge-th.js"></script>
+<script src="knowledge-en.js"></script>
+<script src="assistant.js"></script>
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+function updateThemeIcon(){
+  if(document.body.classList.contains("light-mode")){
+    toggleBtn.textContent = "🌙";
+  }else{
+    toggleBtn.textContent = "☀️";
+  }
+}
+
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light-mode");
+}
+
+updateThemeIcon();
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if(document.body.classList.contains("light-mode")){
+    localStorage.setItem("theme","light");
+  }else{
+    localStorage.setItem("theme","dark");
+  }
+
+  updateThemeIcon();
+});
+</script>
+</body>
+</html>

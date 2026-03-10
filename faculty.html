@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faculty - IOTE</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:'Prompt',sans-serif;
+  background:linear-gradient(180deg,#120524 0%, #18072f 40%, #1a0836 100%);
+  color:white;
+  padding-top:84px;
+}
+
+/* NAVBAR */
+.navbar{
+  transition:0.4s;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.85),rgba(0,0,0,0));
+}
+.navbar.scrolled{
+  background:#1a0033;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* HERO */
+.faculty-hero{
+  padding:70px 0 40px;
+}
+
+.faculty-hero-card{
+  max-width:1200px;
+  margin:0 auto;
+  border-radius:30px;
+  padding:48px 40px;
+  background:
+    radial-gradient(circle at top right, rgba(203,168,255,0.18), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(255,215,0,0.12), transparent 30%),
+    rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  box-shadow:0 18px 45px rgba(0,0,0,0.22);
+  backdrop-filter:blur(10px);
+}
+
+.faculty-eyebrow{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);
+  color:#d9c6ff;
+  font-size:.9rem;
+  margin-bottom:18px;
+}
+
+.faculty-hero h1{
+  font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:700;
+  margin-bottom:14px;
+}
+
+.faculty-hero p{
+  max-width:760px;
+  color:rgba(255,255,255,0.82);
+  line-height:1.8;
+  margin-bottom:0;
+}
+
+/* CONTROL BAR */
+.faculty-controls{
+  padding:10px 0 40px;
+}
+
+.faculty-controls-shell{
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.faculty-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.faculty-tab{
+  border:none;
+  border-radius:999px;
+  padding:12px 22px;
+  background:rgba(255,255,255,0.08);
+  color:#fff;
+  font-weight:500;
+  border:1px solid rgba(255,255,255,0.12);
+  transition:.25s ease;
+}
+
+.faculty-tab:hover{
+  background:rgba(255,255,255,0.14);
+}
+
+.faculty-tab.active{
+  background:linear-gradient(45deg,#2a0c61,#7a0bdc);
+  box-shadow:0 8px 22px rgba(122,11,220,0.24);
+}
+
+.search-wrap{
+  position:relative;
+  width:100%;
+  max-width:360px;
+}
+
+.search-wrap i{
+  position:absolute;
+  left:16px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#d8c5ff;
+}
+
+.search-input{
+  width:100%;
+  border:none;
+  outline:none;
+  border-radius:999px;
+  padding:13px 18px 13px 44px;
+  background:rgba(255,255,255,0.08);
+  color:white;
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+.search-input::placeholder{
+  color:rgba(255,255,255,0.6);
+}
+
+/* SECTION */
+.faculty-section{
+  padding:10px 0 90px;
+}
+
+.section-head{
+  max-width:1200px;
+  margin:0 auto 30px;
+  padding:0 12px;
+}
+
+.section-head h2{
+  font-size:1.9rem;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.section-head p{
+  color:rgba(255,255,255,0.75);
+  margin:0;
+}
+
+.faculty-grid-wrap{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* CARD */
+.faculty-card{
+  background:rgba(255,255,255,0.06);
+  border-radius:24px;
+  padding:24px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition:.3s ease;
+  height:100%;
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 10px 24px rgba(0,0,0,0.16);
+}
+
+.faculty-card:hover{
+  transform:translateY(-8px);
+  background:rgba(255,255,255,0.1);
+  box-shadow:0 18px 34px rgba(0,0,0,0.24);
+}
+
+.faculty-card img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:18px;
+  border:4px solid rgba(203,168,255,0.45);
+  box-shadow:0 8px 22px rgba(0,0,0,0.22);
+}
+
+.faculty-card h5{
+  font-size:1.04rem;
+  font-weight:600;
+  line-height:1.5;
+  min-height:54px;
+  margin-bottom:12px;
+}
+
+.faculty-expertise{
+  font-size:.92rem;
+  color:#d8c8ff;
+  line-height:1.7;
+  min-height:72px;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.faculty-card-footer{
+  margin-top:16px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#ffd700;
+  font-weight:500;
+  font-size:.95rem;
+}
+
+/* EMPTY */
+.empty-state{
+  text-align:center;
+  color:rgba(255,255,255,0.75);
+  padding:40px 0 20px;
+  display:none;
+}
+
+/* MODAL */
+.modal-content{
+  background:#1a0836;
+  border-radius:28px;
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+.profile-wrap{
+  max-width:850px;
+  margin:0 auto;
+}
+
+.profile-img{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid #4a1fa0;
+  box-shadow:0 10px 24px rgba(0,0,0,0.25);
+}
+
+.profile-name{
+  font-size:1.7rem;
+  font-weight:700;
+  margin-top:16px;
+  margin-bottom:10px;
+}
+
+.profile-email a{
+  color:#7dd3fc;
+  text-decoration:none;
+  word-break:break-word;
+}
+
+.profile-block{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:22px;
+  text-align:left;
+  height:100%;
+}
+
+.profile-block h6{
+  color:#ffd700;
+  margin-bottom:12px;
+  font-weight:600;
+}
+
+.profile-block p{
+  margin-bottom:0;
+  color:#f2ecff;
+  line-height:1.85;
+  white-space:pre-line;
+}
+
+.copy-email-btn{
+  border:none;
+  border-radius:999px;
+  padding:10px 16px;
+  background:rgba(255,255,255,0.08);
+  color:white;
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+.copy-email-btn:hover{
+  background:rgba(255,255,255,0.14);
+}
+
+@media (max-width:991px){
+  .faculty-controls-shell{
+    align-items:stretch;
+  }
+
+  .search-wrap{
+    max-width:none;
+  }
+}
+
+@media (max-width:768px){
+  .faculty-hero-card{
+    padding:34px 22px;
+    border-radius:24px;
+  }
+
+  .faculty-card h5{
+    min-height:auto;
+  }
+
+  .faculty-expertise{
+    min-height:auto;
+  }
+
+  .profile-img{
+    width:150px;
+    height:150px;
+  }
+
+  .profile-name{
+    font-size:1.35rem;
+  }
+}
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle{
+  border:none;
+  border-radius:12px;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.12);
+  color:white;
+  font-size:1.1rem;
+  transition:.3s;
+}
+
+.theme-toggle:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.2);
+}
+
+/* ===== LIGHT MODE ===== */
+body.light-mode{
+  background:#f6f7fb;
+  color:#1a1a1a;
+}
+
+/* navbar */
+body.light-mode .navbar{
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
+
+body.light-mode .navbar-brand{
+  color:#5b2cff !important;
+  font-weight:600;
+}
+
+body.light-mode .nav-link{
+  color:#222 !important;
+}
+
+body.light-mode .theme-toggle{
+  background:#f1f2f6;
+  color:#222;
+  border:1px solid rgba(0,0,0,0.08);
+}
+
+/* hero */
+body.light-mode .hero::before{
+  background:rgba(255,255,255,0.38);
+}
+
+body.light-mode .hero h1,
+body.light-mode .hero h3{
+  color:white;
+  text-shadow:0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* dark sections become light */
+body.light-mode .section-dark{
+  background:linear-gradient(180deg,#ffffff 0%, #f7f8fc 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .section-dark h2,
+body.light-mode .section-dark h3,
+body.light-mode .section-dark h4,
+body.light-mode .section-dark h5,
+body.light-mode .section-dark p,
+body.light-mode .section-dark .lead{
+  color:#1a1a1a !important;
+}
+
+/* cards */
+body.light-mode .feature-box,
+body.light-mode .project-video-card,
+body.light-mode .project-thumb,
+body.light-mode .iote-path-shell,
+body.light-mode .iote-glass-card,
+body.light-mode .contact-card,
+body.light-mode .admission-card,
+body.light-mode .faculty-card,
+body.light-mode .detail-box,
+body.light-mode .section-space,
+body.light-mode .glass-box{
+  background:rgba(255,255,255,0.92) !important;
+  color:#1a1a1a !important;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 14px 30px rgba(0,0,0,0.08);
+}
+
+/* text in cards */
+body.light-mode .feature-box p,
+body.light-mode .project-video-body p,
+body.light-mode .project-thumb-body p,
+body.light-mode .section-subtitle,
+body.light-mode .iote-path-subtitle,
+body.light-mode .iote-match-copy,
+body.light-mode .contact-card a,
+body.light-mode .admission-card p,
+body.light-mode .faculty-expertise,
+body.light-mode .detail-box p,
+body.light-mode .detail-box li,
+body.light-mode .section-space p{
+  color:#444 !important;
+}
+
+/* headings */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6{
+  color:#151515;
+}
+
+/* buttons */
+body.light-mode .btn-warning,
+body.light-mode .project-btn-primary,
+body.light-mode .assessment-btn,
+body.light-mode .iote-primary-btn{
+  background:#ffd54a !important;
+  color:#1a1a1a !important;
+  border:none;
+}
+
+body.light-mode .project-btn-outline,
+body.light-mode .iote-secondary-btn{
+  border:1px solid rgba(0,0,0,0.12);
+  color:#222 !important;
+  background:#fff;
+}
+
+/* project section */
+body.light-mode .project-showcase{
+  background:linear-gradient(180deg,#f7f8fc 0%, #eef1f8 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .project-showcase h2,
+body.light-mode .project-showcase p{
+  color:#1a1a1a !important;
+}
+/* faculty search - light mode fix */
+body.light-mode .search-wrap i{
+  color:#666;
+}
+
+body.light-mode .search-input{
+  background:#ffffff;
+  color:#1a1a1a;
+  border:1px solid rgba(0,0,0,0.12);
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+
+body.light-mode .search-input::placeholder{
+  color:#888;
+}
+
+body.light-mode .search-input:focus{
+  border-color:#7a0bdc;
+  box-shadow:0 0 0 4px rgba(122,11,220,0.12);
+}
+body.light-mode .faculty-tab{
+  background:#ffffff;
+  color:#222;
+  border:1px solid rgba(0,0,0,0.1);
+}
+
+body.light-mode .faculty-tab:hover{
+  background:#f3f4f8;
+}
+
+body.light-mode .faculty-tab.active{
+  background:linear-gradient(45deg,#5b2cff,#7a0bdc);
+  color:white;
+  border-color:transparent;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<div class="container">
+<a class="navbar-brand" href="index.html">IoT and Information Engineering</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="mainNavbar">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="academics.html">Academics</a></li>
+<li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+<li class="nav-item"><a class="nav-link active" href="faculty.html">Faculty</a></li>
+<li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+  <button id="themeToggle" class="theme-toggle" type="button">☀️</button>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="faculty-hero">
+  <div class="container">
+    <div class="faculty-hero-card">
+      <div class="faculty-eyebrow">Faculty Directory</div>
+      <h1>Faculty & Academic Staff</h1>
+      <p>
+        รวมรายชื่ออาจารย์และบุคลากรของหลักสูตร IoT System and Information และ Industrial Physics
+        พร้อมข้อมูลความเชี่ยวชาญ ประวัติการศึกษา และช่องทางการติดต่อ
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTROL BAR -->
+<section class="faculty-controls">
+  <div class="container">
+    <div class="faculty-controls-shell">
+      <div class="faculty-tabs">
+        <button class="faculty-tab active" data-tab="iot">IoT System and Information</button>
+        <button class="faculty-tab" data-tab="physics">Industrial Physics</button>
+      </div>
+
+      <div class="search-wrap">
+        <i class="bi bi-search"></i>
+        <input type="text" id="facultySearch" class="search-input" placeholder="ค้นหาชื่ออาจารย์หรือความเชี่ยวชาญ">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IOT SECTION -->
+<section id="iotSection" class="faculty-section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Professor of IoT System and Information</h2>
+      <p>อาจารย์ผู้สอนและผู้เชี่ยวชาญด้าน IoT, Embedded Systems, Software, AI และ Information Engineering</p>
+    </div>
+    <div class="faculty-grid-wrap">
+      <div class="row g-4" id="iotContainer"></div>
+      <div class="empty-state" id="iotEmpty">ไม่พบข้อมูลที่ตรงกับคำค้นหา</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHYSICS SECTION -->
+<section id="physicsSection" class="faculty-section d-none">
+  <div class="container">
+    <div class="section-head">
+      <h2>Professor of Industrial Physics</h2>
+      <p>อาจารย์และนักวิจัยด้านฟิสิกส์อุตสาหกรรม วัสดุศาสตร์ ออปติก พลังงาน และเทคโนโลยีประยุกต์</p>
+    </div>
+    <div class="faculty-grid-wrap">
+      <div class="row g-4" id="physicsContainer"></div>
+      <div class="empty-state" id="physicsEmpty">ไม่พบข้อมูลที่ตรงกับคำค้นหา</div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal fade" id="facultyModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content text-white">
+      <div class="modal-header border-0 px-4 pt-4">
+        <h5 class="modal-title">Faculty Profile</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body px-4 pb-4" id="modalBody"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const iotProfessors = [
+{
+name:"Asst.Prof.Dr.Pikulkaew Tangtisanon",
+expertise:"Web Application, Mobile Application, Information Security",
+education:`วศ.บ. วิศวกรรมสารสนเทศ
+วศ.ม. วิศวกรรมสารสนเทศ
+D.Eng Tokai University JAPAN`,
+email:"pikulkaew.ta@kmitl.ac.th",
+img:"dr.1.jpg"
+},
+{
+name:"Assoc.Prof.Dr.Boonchana Purahong",
+expertise:"Microprocessor Application , Microcontroller , Robotic , Internet of Things and Smart System",
+education:`อส.บ. (เทคโนโลยีอิเล็กทรอนิกส์) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+วศ.ม. (วิศวกรรมสารสนเทศ) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"boonchana.pu@kmitl.ac.th",
+img:"dr.2.jpg"
+},
+{
+name:"Asst.Prof.Dr.Vanvisa Chutchavong",
+expertise:"Electronic , Bernstein Filter , Railway Signaling and Operation , Pattern recognition , Railway Communications",
+education:`อส.บ. เกียรตินิยมอันดับ 2 (เทคโนโลยีอิเล็กทรอนิกส์) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+วศ.ม. (วิศวกรรมสารสนเทศ) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+วศ.ด. (วิศวกรรมไฟฟ้า) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"vanvisa.ch@kmitl.ac.th",
+img:"/dr.4.jpg"
+},
+{
+name:"Asst.Prof.Dr.Natchanai Roongmuanpha",
+expertise:"immittance function simulators , active analog filters , oscillator design , chaotic circuit realization",
+education:`B.Eng.(Electronics Engineering) King Mongkuts Institute of Technology Ladkrabang
+M.Eng.(Control Engineering) King Mongkuts Institute of Technology Ladkrabang
+D.Eng.(Electrical Engineering) King Mongkuts Institute of Technology Ladkrabang`,
+email:"natchanai.ro@kmitl.ac.th",
+img:"dr.5.jpg"
+},
+{
+name:"Asst.Prof.Dr.Kleddao Satcharoen",
+expertise:"Human computer interaction , User Interfaces",
+education:`Doctoral of Philosophy in Computer Science, University of Buckingham, UK
+Master of Science in Computing (MERIT), University of Buckingham, UK
+Master of Art (Political Science), THAILAND
+Bachelor of Science in Management Technology, KMITL, THAILAND`,
+email:"kleddao.sa@kmitl.ac.th",
+img:"dr.6.jpg"
+},
+{
+name:"Asst.Prof.Nitjaree Satayarak",
+expertise:"Software Engineering , Distributed Testing System",
+education:`วศ.บ. (วิศวกรรมคอมพิวเตอร์) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+วศ.ม. (วิศวกรรมไฟฟ้า) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"nitjaree.sa@kmitl.ac.th",
+img:"dr.7.jpg"
+},
+{
+name:"Asst.Prof.Dr.Thanavit Anuwongpinit",
+expertise:"Microprocessor Application , Internet of Things , Embedded Systems , Integrated System , Railway Signaling , Communication and Operation",
+education:`B.Eng.(Information Engineering) King Mongkuts Institute of Technology Ladkrabang
+M.Eng.(Information Engineering) King Mongkuts Institute of Technology Ladkrabang
+D.Eng.(Electrical Engineering) King Mongkuts Institute of Technology Ladkrabang`,
+email:"thanavit.an@kmitl.ac.th",
+img:"dr.8.jpg"
+},
+{
+name:"Asst.Prof.Dr.Auttapon Pomsathit",
+expertise:"Cyber Security , Internetworkind Design , Information Security",
+education:`B.Eng.(Electronics Engineering) King Mongkuts Institute of Technology Ladkrabang
+M.Eng.(Information Engineering) King Mongkuts Institute of Technology Ladkrabang
+D.Eng.(Electrical Engineering) King Mongkuts Institute of Technology Ladkrabang`,
+email:"auttapon.po@kmitl.ac.th",
+img:"dr.10.jpg"
+},
+{
+name:"Asst.Prof.Sorapong Wachirarattanapornkul",
+expertise:"Analog and Digital Filter , Embedded System , RFID and Application , Pattern recognition , Information for Energy",
+education:`อส.บ.(เทคโนโลยีอิเล็กทรอนิกส์) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+วศ.ม. (วิศวกรรมไฟฟ้า) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"auttapon.po@kmitl.ac.th",
+img:"dr.11.jpg"
+},
+{
+name:"Asst.Prof.Paisan Sithiyopasakul",
+expertise:"Wireless Communication , Microprocessor Applications , Digital Filter",
+education:`อส.บ. (เทคโนโลยีคอมพิวเตอร์อุตสาหกรรม) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+วศ.ม. (วิศวกรรมไฟฟ้า) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"paisan-si@kmitl.ac.th",
+img:"dr.12.jpg"
+},
+{
+name:"Assoc.Prof.Dr.Attasit Lasakul",
+expertise:"Digital Processing , Image Watermarking , Embedded Systems , Image Processing , Machine Vision",
+education:`อส.บ. (เทคโนโลยีอิเล็กทรอนิกส์) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ศ.ม. (วิศวกรรมไฟฟ้า) สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+D.Eng. (Electrical Engineering) Tokai University, JAPAN`,
+email:"attasit.la@kmitl.ac.th",
+img:"dr.13.jpg"
+},
+{
+name:"Prof.Dr.Pitikhate Sooraksa",
+expertise:"IT Automation , Industrial Informatics",
+education:`กศ.บ. เกียรตินิยม (ฟิสิกส์) มหาวิทยาลัยศรีนครินทรวิโรฒ ปทุมวัน
+วท.ม. (ฟิสิกส์) มหาวิทยาลัยศรีนครินทรวิโรฒ ประสานมิตร
+M.S. (Electrical Engineering) George Washington University, USA
+Ph.D. (Electrical Engineering) University of Houston, USA`,
+email:"pitikhate.so@kmitl.ac.th",
+img:"dr.14.jpg"
+}
+];
+
+const physicsProfessors = [
+{
+name:"รศ.ดร.ภัทรียา ดำรงศักดิ์",
+expertise:"FLUORESCENCE SPECTROSCOPY , FLUORESCENT CONCENTRATORS , OPTICAL SPECTROSCOPY , SILICON PHOTOVOLTAICS , THIN FILM LUMINESCENCE",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาโท วท.ม. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาเอก Ph.D. Engineering Materials University of Southampton, UK`,
+email:"pattareeya.da@kmitl.ac.th",
+img:"1.jpg"
+},
+{
+name:"ศ.ดร.เชรษฐา รัตนพันธ์",
+expertise:"CHARACTERIZATION , IMPROVEMENT OF THERMOELECTRIC MATERIALS , SYNTHESIS",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยขอนแก่น
+ปริญญาโท วท.ม. ฟิสิกส์ มหาวิทยาลัยขอนแก่น
+ปริญญาเอก ปร.ด. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"chesta.ru@kmitl.ac.th",
+img:"2.jpg"
+},
+{
+name:"ศ.ดร.อาภาภรณ์ สกุลการะเวก",
+expertise:"MATERIAL CHARACTERIZATION , MATERIAL SCIENCE , THERMAL PROPERTY , THERMOELECTRIC MATERIAL , THIN FILM",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยศิลปากร
+ปริญญาโท วท.ม. ฟิสิกส์ จุฬาลงกรณ์มหาวิทยาลัย 
+ปริญญาเอก วท.ด. ฟิสิกส์ จุฬาลงกรณ์มหาวิทยาลัย`,
+email:"aparporn.sa@kmitl.ac.th",
+img:"3.jpg"
+},
+{
+name:"รศ.ดร.สาหร่าย เล็กชะอุ่ม",
+expertise:"INTERNET OF THING TECHNOLOGY , MEASURING METHOD , SIMULATION , STIRLING ENGINE , TISSUE",
+education:`ปริญญาตรี วท.บ. นิวเคลียร์เทคโนโลยี จุฬาลงกรณ์มหาวิทยาลัย 
+ปริญญาโท วศ.ม. ฟิสิกส์ มหาวิทยาลัยบูรพา
+ปริญญาเอก Ph.D. Electrical Engineering and Computer Science Iwate University, Japan`,
+email:"sarai.le@kmit.ac.th",
+img:"4.jpg"
+},
+{
+name:"รศ.ดร.กฤษกร โล้เจริญรัตน์",
+expertise:"CANCER , NANOPARTICLES , PLASMONIC",
+education:`ปริญญาตรี วท.บ. เคมีวิศวกรรม จุฬาลงกรณ์มหาวิทยาลัย
+ปริญญาโท วท.ม. เทคโนโลยีการผลิต สถาบันเทคโนโลยีแห่งเอเซีย
+ปริญญาเอก Ph.D. Physical Materials Science Japan Advanced Institute of Science and Technology, JAPAN`,
+email:"kitsakorn.lo@kmitl.ac.th",
+img:"5.jpg"
+},
+{
+name:"รศ.ดร.รัชนก สมพรเสน่ห์",
+expertise:"2D MATERIALS , ELECTRICAL CHARACTERIZATION , GRAPHENE , NANOELECTRONICS , QUANTUM TRANSPORT PHENOMENA",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตการศึกษาสุราษฎร์ธานี
+ปริญญาเอก Ph.D. Physics University at Buffalo, The State University of NY, USA.`,
+email:"ratchanok.so@kmitl.ac.th",
+img:"6.jpg"
+},
+{
+name:"ผศ.ดร.ประธาน บุรณศิริ",
+expertise:"DIGITAL HOLOGRAPHY , LASER STABILIZEATION , MEDICAL PHYSICS , METAMATERIAL , NONLINEAR OPTIC , PHOTONIC CRYSTAL , QUANTITATIVE PHASE IMAGING",
+education:`ปริญญาโท M.S. Physics Major Optics University of Alabama in Huntsville, USA
+ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยรามคำแหง
+ปริญญาเอก Ph.D. Electrical Engineering University of Dayton, USA`,
+email:"prathan.bu@kmitl.ac.th",
+img:"7.jpg"
+},
+{
+name:"ผศ.ดร.กีรยุทธ์ ศรีนวลจันทร์",
+expertise:"CHARACTERIZATION , IMPROVEMENT OF THERMOELECTRIC MATERIALS , SYNTHESIS",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยขอนแก่น
+ปริญญาโท วท.ม. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาเอก D.Eng. Electrical Engineering and Electronics Engineering Iwate University, Japan`,
+email:"keerayoot.sr@kmitl.ac.th",
+img:"8.jpg"
+},
+{
+name:"ผศ.สุรศักดิ์ พิพัฒน์ศาสตร์",
+expertise:"ENERGY , OPTICS",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาโท วท.ม. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"surasak.pi@kmitl.ac.th",
+img:"9.jpg"
+},
+{
+name:"ผศ.ดร.ศ.ทิพวรรณ คล้ายบุญมี",
+expertise:"",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาโท วท.ม. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาเอก ปร.ด. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"s.tipawan.kh@kmitl.ac.th",
+img:"10.jpg"
+},
+{
+name:"ผศ.ธนภรณ์ ลีลาวัฒนานนท์",
+expertise:"MODELING AND SIMULATION , OPTICAL DATA COMMUNICATION  , SURFACE PLASMONS",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาโท วท.ม. เทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"tanaporn.le@kmitl.ac.th",
+img:"11.jpg"
+},
+{
+name:"ผศ.ดร.เมตยา กิติวรรณ",
+expertise:"HYDROGEN SEPARATION MEMBRANE , MICROWAVE PROCESSING OF MATERIALS , NANO-COATING BY ROTARY CHEMICAL VAPOR DEPOSITION , SINTERING OF ADVANCED CERAMICS",
+education:`ปริญญาตรี วท.บ. วัสดุศาสตร์ มหาวิทยาลัยเชียงใหม่
+ปริญญาโท วท.ม. เทคโนโลยีเซรามิก จุฬาลงกรณ์มหาวิทยาลัย
+ปริญญาเอก Ph.D. Materials Science Tohoku University, Japan`,
+email:"mettaya.ki@kmitl.ac.th",
+img:"12.jpg"
+},
+{
+name:"ผศ.ดร.พิชชานันท์ ธีเศรษฐ์โศภน",
+expertise:"MATERIAL CHARACTERIZATION , MATERIAL SCIENCE , THERMAL PROPERTY , THERMOELECTRIC MATERIAL , THIN FILM",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยเกษตรศาสตร์
+ปริญญาโท วท.ม. ฟิสิกส์เชิงเคมี มหาวิทยาลัยมหิดล
+ปริญญาเอก Ph.D. Energy สถาบันเทคโนโลยีแห่งเอเซีย`,
+email:"pichanan.te@kmitl.ac.th",
+img:"13.jpg"
+},
+{
+name:"ผศ.ดร.ณัฐพร พรหมรส",
+expertise:"MATERIAL CHARACTERIZATION , MATERIAL SCIENCE , THERMAL PROPERTY , THERMOELECTRIC MATERIAL , THIN FILM",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาโท วท.ม. ฟิสิกส์ จุฬาลงกรณ์มหาวิทยาลัย
+ปริญญาเอก D.Eng. Applied Science for Electronics and Materials Kyushu University, Japan`,
+email:"nathaporn.pr@kmitl.ac.th",
+img:"14.jpg"
+},
+{
+name:"ผศ.ดร.ณัฏกฤษ สมดอก",
+expertise:"",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาโท วท.ม. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาเอก ปร.ด. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"nuttakrit.so@kmitl.ac.th",
+img:"15.jpg"
+},
+{
+name:"ผศ.ดร.ภาณุพล โขลนกระโทก",
+expertise:"MEASUREMENT AND INSTRUMENTATIONS , THERMOGRAPHY",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาโท วศ.ม. วิศวกรรมการวัดคุม สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาเอก วศ.ด. วิศวกรรมไฟฟ้า สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"bhanupol.kl@kmitl.ac.th",
+img:"16.jpg"
+},
+{
+name:"ผศ.ดร.พิศาล ศรีราช",
+expertise:"ENERGY HARVESTING SENSOR , MATERIAL CHARACTERIZATION , MATERIALS SCIENCE , PIEZOELECTRIC MATERIAL",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตการศึกษาสุราษฎร์ธานี
+ปริญญาโท วท.ม. ฟิสิกส์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตการศึกษาสุราษฎร์ธานี
+ปริญญาเอก ปร.ด. ฟิสิกส์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตการศึกษาสุราษฎร์ธานี`,
+email:"pisan.su@kmitl.ac.th",
+img:"17.jpg"
+},
+{
+name:"ผศ.ดร.ลัญจกร ตันนุกิจ",
+expertise:"",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยมหิดล
+ปริญญาเอก Ph.D. ฟิสิกส์ มหาวิทยาลัยมหิดล`,
+email:"lunchakorn.ta@kmitl.ac.th",
+img:"N.jpg"
+},
+{
+name:"ผศ.ดร.ยงยุทธ แก้วจำรัส",
+expertise:"ออกแบบวงจรอิเล็กทรอนิกส์ , วัสดุเซนเซอร์และการประยุกต์ใช้งาน , การปรับปรุงสัญญาณเซนเซอร์ , การประยุกต์ใช้งานไมโครคอนโทรลเลอร์และอินเทอร์เน็ตของสรรพสิ่ง",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาโท วศ.ม. วิศวกรรมไมโครอิเล็กทรอนิกส์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาเอก วศ.ด. วิศวกรรมไฟฟ้า สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"yongyut.ka@kmitl.ac.th",
+img:"Y.jpg"
+},
+{
+name:"อ.ธรรมรัตน์ แต่งตั้ง",
+expertise:"ARTIFICIAL INTELLIGENCE , DATA PROCESSING , IMAGE PROCESSING , NP-HARD PROBLEM , OPTIMIZATION PROBLEM",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยรามคำแหง 
+ปริญญาโท วศ.ม. วิศวกรรมไฟฟ้า สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"thammarat.ta@kmitl.ac.th",
+img:"T.jpg"
+},
+{
+name:"ดร.วิฑูรย์ ยินดีสุข",
+expertise:"QUANTUM DOTS , SILAR METHODS , SOLAR CELLS , SOLAR ENERGY , THIN FILMS",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยรามคำแหง
+ปริญญาโท วท.ม. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"witoon.yi@kmitl.ac.th",
+img:"21.jpg"
+},
+{
+name:"ดร.เฉลิมพล รุจรดาวงศ์",
+expertise:"NANOTECHNOLOGY , OPTICAL SENSOR , SMART FARMING , STEM EDUCATION , SURFACE PLASMONIC RESONANCE",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง 
+ปริญญาโท วท.ม. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง
+ปริญญาเอก ปร.ด. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"chinapat.ru@kmitl.ac.th",
+img:"22.jpg"
+},
+{
+name:"อ.สุรชาติ กมลดิลก",
+expertise:"FORENSIC SCIENCE , LASERS , OPTICAL INSTRUMENTS , PHOTONICS , PHYSICS EDUCATION",
+education:`ปริญญาตรี วท.บ. ฟิสิกส์ มหาวิทยาลัยรามคำแหง
+ปริญญาโท วท.ม. ฟิสิกส์ประยุกต์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง`,
+email:"surachart.ka@kmitl.ac.th",
+img:"90.jpg"
+}
+];
+
+let activeTab = "iot";
+
+function getActiveData() {
+  return activeTab === "iot" ? iotProfessors : physicsProfessors;
+}
+
+function normalizeText(text) {
+  return (text || "").toLowerCase();
+}
+
+function expertisePreview(text) {
+  if (!text || !text.trim()) return "No expertise information";
+  return text;
+}
+
+function renderCards() {
+  const query = normalizeText(document.getElementById("facultySearch").value);
+  const data = getActiveData();
+
+  const filtered = data.filter(person => {
+    return normalizeText(person.name).includes(query) ||
+           normalizeText(person.expertise).includes(query) ||
+           normalizeText(person.email).includes(query);
+  });
+
+  const targetContainer = activeTab === "iot"
+    ? document.getElementById("iotContainer")
+    : document.getElementById("physicsContainer");
+
+  const emptyState = activeTab === "iot"
+    ? document.getElementById("iotEmpty")
+    : document.getElementById("physicsEmpty");
+
+  targetContainer.innerHTML = "";
+
+  filtered.forEach((p, index) => {
+    const originalIndex = data.indexOf(p);
+
+    targetContainer.innerHTML += `
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="faculty-card" data-index="${originalIndex}">
+          <img src="${p.img}" alt="${p.name}">
+          <h5>${p.name}</h5>
+          <div class="faculty-expertise">${expertisePreview(p.expertise)}</div>
+          <div class="faculty-card-footer">
+            <i class="bi bi-arrow-up-right-circle"></i>
+            <span>View Profile</span>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  emptyState.style.display = filtered.length ? "none" : "block";
+}
+
+function switchTab(tabKey) {
+  activeTab = tabKey;
+
+  document.querySelectorAll(".faculty-tab").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.tab === tabKey);
+  });
+
+  document.getElementById("iotSection").classList.toggle("d-none", tabKey !== "iot");
+  document.getElementById("physicsSection").classList.toggle("d-none", tabKey !== "physics");
+
+  renderCards();
+}
+
+function showProfile(person) {
+  const expertiseText = person.expertise && person.expertise.trim()
+    ? person.expertise
+    : "ไม่มีข้อมูล";
+
+  document.getElementById("modalBody").innerHTML = `
+    <div class="profile-wrap">
+      <div class="text-center mb-4">
+        <img src="${person.img}" alt="${person.name}" class="profile-img">
+        <div class="profile-name">${person.name}</div>
+        <div class="profile-email">
+          <a href="mailto:${person.email}">${person.email}</a>
+        </div>
+        <button class="copy-email-btn mt-3" type="button" onclick="copyEmail('${person.email}')">
+          <i class="bi bi-copy"></i> Copy Email
+        </button>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="profile-block">
+            <h6>Academic Expertise</h6>
+            <p>${expertiseText}</p>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="profile-block">
+            <h6>Education</h6>
+            <p>${person.education}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  new bootstrap.Modal(document.getElementById("facultyModal")).show();
+}
+
+function copyEmail(email) {
+  navigator.clipboard.writeText(email).then(() => {
+    alert("Copied: " + email);
+  });
+}
+
+document.querySelectorAll(".faculty-tab").forEach(btn => {
+  btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+});
+
+document.getElementById("facultySearch").addEventListener("input", renderCards);
+
+document.addEventListener("click", function(e) {
+  const card = e.target.closest(".faculty-card");
+  if (!card) return;
+
+  const index = Number(card.dataset.index);
+  const data = getActiveData();
+  showProfile(data[index]);
+});
+
+window.addEventListener("scroll",function(){
+  const navbar=document.querySelector(".navbar");
+  if(window.scrollY>100){
+    navbar.classList.add("scrolled");
+  }else{
+    navbar.classList.remove("scrolled");
+  }
+});
+
+renderCards();
+</script>
+
+<div id="iote-assistant-mount"></div>
+<link rel="stylesheet" href="assistant.css">
+<script src="routes.js"></script>
+<script src="knowledge-th.js"></script>
+<script src="knowledge-en.js"></script>
+<script src="assistant.js"></script>
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+function updateThemeIcon(){
+  if(document.body.classList.contains("light-mode")){
+    toggleBtn.textContent = "🌙";
+  }else{
+    toggleBtn.textContent = "☀️";
+  }
+}
+
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light-mode");
+}
+
+updateThemeIcon();
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if(document.body.classList.contains("light-mode")){
+    localStorage.setItem("theme","light");
+  }else{
+    localStorage.setItem("theme","dark");
+  }
+
+  updateThemeIcon();
+});
+</script>
+</body>
+</html>

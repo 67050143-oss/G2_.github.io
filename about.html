@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About IOTE</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:'Prompt', sans-serif;
+  background-color:#15072e;
+  padding-top:80px;
+  color:white;
+}
+
+/* Navbar */
+.navbar{
+  transition:0.4s;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
+}
+.navbar.scrolled{
+  background:#1a0033;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* รูปด้านบน */
+.image-frame{
+  width:85%;
+  margin:40px auto;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,0.25);
+}
+.image-frame img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  display:block;
+}
+
+/* ปุ่ม */
+.custom-btn{
+  padding:15px 30px;
+  border-radius:18px;
+  border:none;
+  color:white;
+  font-weight:500;
+  background:linear-gradient(45deg,#2a0c61,#7a0bdc);
+  transition:0.3s;
+  min-width:260px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+.custom-btn:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  color:white;
+}
+
+.button-group{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  margin:50px 0 90px;
+  flex-wrap:wrap;
+}
+
+/* Section */
+.section-space{
+  width:85%;
+  margin:0 auto 70px;
+  background:rgba(255,255,255,0.05);
+  padding:60px;
+  border-radius:24px;
+  line-height:1.95;
+  scroll-margin-top:120px;
+  box-shadow:0 12px 35px rgba(0,0,0,0.18);
+}
+
+.section-space h2{
+  margin-bottom:25px;
+  font-weight:600;
+  color:#cba8ff;
+}
+
+.section-space p{
+  max-width:980px;
+  margin:0 auto 22px;
+  color:#f2ecff;
+  font-size:1rem;
+}
+
+/* Responsive */
+@media (max-width:992px){
+  .image-frame,
+  .section-space{
+    width:90%;
+  }
+
+  .section-space{
+    padding:40px 30px;
+  }
+}
+
+@media (max-width:768px){
+  .image-frame img{
+    height:260px;
+  }
+
+  .custom-btn{
+    min-width:100%;
+  }
+
+  .button-group{
+    gap:16px;
+    margin:40px 0 70px;
+  }
+
+  .section-space{
+    padding:30px 20px;
+    border-radius:18px;
+  }
+
+  .section-space h2{
+    font-size:1.4rem;
+  }
+
+  .section-space p{
+    font-size:0.96rem;
+    line-height:1.85;
+  }
+}
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle{
+  border:none;
+  border-radius:12px;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.12);
+  color:white;
+  font-size:1.1rem;
+  transition:.3s;
+}
+
+.theme-toggle:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,0.2);
+}
+
+/* ===== LIGHT MODE ===== */
+body.light-mode{
+  background:#f6f7fb;
+  color:#1a1a1a;
+}
+
+/* navbar */
+body.light-mode .navbar{
+  background:rgba(255,255,255,0.88);
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+}
+
+body.light-mode .navbar-brand{
+  color:#5b2cff !important;
+  font-weight:600;
+}
+
+body.light-mode .nav-link{
+  color:#222 !important;
+}
+
+body.light-mode .theme-toggle{
+  background:#f1f2f6;
+  color:#222;
+  border:1px solid rgba(0,0,0,0.08);
+}
+
+/* hero */
+body.light-mode .hero::before{
+  background:rgba(255,255,255,0.38);
+}
+
+body.light-mode .hero h1,
+body.light-mode .hero h3{
+  color:white;
+  text-shadow:0 8px 24px rgba(0,0,0,0.35);
+}
+
+/* dark sections become light */
+body.light-mode .section-dark{
+  background:linear-gradient(180deg,#ffffff 0%, #f7f8fc 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .section-dark h2,
+body.light-mode .section-dark h3,
+body.light-mode .section-dark h4,
+body.light-mode .section-dark h5,
+body.light-mode .section-dark p,
+body.light-mode .section-dark .lead{
+  color:#1a1a1a !important;
+}
+
+/* cards */
+body.light-mode .feature-box,
+body.light-mode .project-video-card,
+body.light-mode .project-thumb,
+body.light-mode .iote-path-shell,
+body.light-mode .iote-glass-card,
+body.light-mode .contact-card,
+body.light-mode .admission-card,
+body.light-mode .faculty-card,
+body.light-mode .detail-box,
+body.light-mode .section-space,
+body.light-mode .glass-box{
+  background:rgba(255,255,255,0.92) !important;
+  color:#1a1a1a !important;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 14px 30px rgba(0,0,0,0.08);
+}
+
+/* text in cards */
+body.light-mode .feature-box p,
+body.light-mode .project-video-body p,
+body.light-mode .project-thumb-body p,
+body.light-mode .section-subtitle,
+body.light-mode .iote-path-subtitle,
+body.light-mode .iote-match-copy,
+body.light-mode .contact-card a,
+body.light-mode .admission-card p,
+body.light-mode .faculty-expertise,
+body.light-mode .detail-box p,
+body.light-mode .detail-box li,
+body.light-mode .section-space p{
+  color:#444 !important;
+}
+
+/* headings */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6{
+  color:#151515;
+}
+
+/* buttons */
+body.light-mode .btn-warning,
+body.light-mode .project-btn-primary,
+body.light-mode .assessment-btn,
+body.light-mode .iote-primary-btn{
+  background:#ffd54a !important;
+  color:#1a1a1a !important;
+  border:none;
+}
+
+body.light-mode .project-btn-outline,
+body.light-mode .iote-secondary-btn{
+  border:1px solid rgba(0,0,0,0.12);
+  color:#222 !important;
+  background:#fff;
+}
+
+/* project section */
+body.light-mode .project-showcase{
+  background:linear-gradient(180deg,#f7f8fc 0%, #eef1f8 100%);
+  color:#1a1a1a;
+}
+
+body.light-mode .project-showcase h2,
+body.light-mode .project-showcase p{
+  color:#1a1a1a !important;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<div class="container">
+<a class="navbar-brand" href="index.html">IoT and Information Engineering</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="mainNavbar">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="academics.html">Academics</a></li>
+<li class="nav-item"><a class="nav-link" href="admission.html">Admission</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+<li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
+<li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+  <button id="themeToggle" class="theme-toggle" type="button">☀️</button>
+</li>
+
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- รูปบน -->
+<div class="image-frame">
+<img src="about.jpg" alt="About IOTE">
+</div>
+
+<!-- ปุ่ม -->
+<div class="button-group">
+
+<a href="#iot" class="custom-btn text-decoration-none text-center d-inline-block">
+About IoT System and Information
+</a>
+
+<a href="#dual" class="custom-btn text-decoration-none text-center d-inline-block">
+About Dual Degree
+</a>
+
+<a href="#industry" class="custom-btn text-decoration-none text-center d-inline-block">
+About Industry Physics
+</a>
+
+</div>
+
+<!-- SECTION 1 -->
+<div id="iot" class="section-space">
+<h2>About IoT System and Information</h2>
+<p>
+ในโลกยุคดิจิทัล 4.0 ที่เทคโนโลยีต่าง ๆ เข้ามามีบทบาทสำคัญเป็นอย่างมากในชีวิตประจำวันรวมถึงการพัฒนาเศรษฐกิจระดับประเทศ ที่การเชื่อมต่อสื่อสารนั้นเป็นไปอย่างไร้พรมแดน ไม่เพียงแต่การสื่อสารระหว่างมนุษย์อย่างเดียว แต่ยังมีการเชื่อมต่อสื่อสารระหว่างอุปกรณ์กับอุปกรณ์ เครื่องจักร หรือทุกสรรพสิ่ง จึงเป็นที่มาของเทคโนโลยีระบบอินเทอร์เน็ตในทุกสรรพสิ่ง หรือเรียกสั้น ๆ ว่าไอโอที (IoT) ซึ่งประกอบด้วยเทคโนโลยีด้านสมาร์ทเซ็นเซอร์ การสื่อสารและเครือข่าย คอมพิวเตอร์และการพัฒนาซอฟต์แวร์ วิทยาการข้อมูลและปัญญาประดิษฐ์ ซึ่งเป็นศาสตร์ที่บูรณาการความรู้ในหลากหลายด้าน หรือเรียกว่าสหวิทยาการ เพื่อให้สามารถออกแบบสร้างนวัตกรรมด้านระบบไอโอทีและสารสนเทศได้
+</p>
+
+<p>
+หลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ เป็นหลักสูตรที่ตอบสนองต่อนโยบายทางการพัฒนาเศรษฐกิจและอุตสาหกรรมของรัฐบาล โดยมีความสอดคล้องกับแผนพัฒนาเศรษฐกิจและสังคมแห่งชาติฉบับที่ 13 (พ.ศ. 2565-2569) ที่ได้กล่าวถึงการเปลี่ยนแปลงทางเทคโนโลยีแบบก้าวกระโดด (Disruption) และหนึ่งในเทคโนโลยีที่สำคัญนั้นคือ เทคโนโลยีระบบไอโอทีและสารสนเทศ เช่นเดียวกันกับอุตสาหกรรมเป้าหมายของประเทศ หรือที่เรียกว่า “S-Curve” ที่มีอุตสาหกรรมอิเล็กทรอนิกส์อัจฉริยะ และอุตสาหกรรมดิจิทัล (New S-Curve) รวมถึงการพัฒนาเขตเศรษฐกิจพิเศษภาคตะวันออก (EEC) ที่ภาครัฐจะสนับสนุนและมีความต้องการบัณฑิตในสาขานี้จำนวนมาก
+</p>
+
+<p>
+หลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศ เป็นเสมือนฟันเฟืองที่เชื่อมองค์ประกอบของโลกดิจิทัลเข้าด้วยกัน นักศึกษาที่เรียนในหลักสูตรนี้จะได้ศึกษาและปฏิบัติเกี่ยวกับด้านเทคโนโลยีระบบไอโอทีและสารสนเทศ โดยอาศัยความรู้พื้นฐานทั้งด้านซอฟต์แวร์ เช่น การเขียนโปรแกรมคอมพิวเตอร์ การพัฒนาซอฟต์แวร์และแอปพลิเคชัน ด้านฮาร์ดแวร์ ได้แก่ การพัฒนาอุปกรณ์อิเล็กทรอนิกส์อัจฉริยะและสมาร์ทเซ็นเซอร์ รวมถึงเชื่อมโยงสื่อสารเข้าหากันด้วยการศึกษาด้านการสื่อสารและเครือข่าย ไปจนถึงการประยุกต์ใช้เทคโนโลยีปัญญาประดิษฐ์และวิทยาการข้อมูล โดยผสมผสานความรู้ต่าง ๆ เหล่านี้เข้ากับกระบวนการทางวิศวกรรมศาสตร์และคณิตศาสตร์ เพื่อออกแบบสร้างนวัตกรรมใหม่ ๆ และส่งเสริมให้นักศึกษาต่อยอดนวัตกรรมของตนเองเพื่อผลิตใช้หรือทำเป็นสตาร์ทอัพเพื่อสร้างธุรกิจของตนเองได้
+</p>
+
+<p>
+อาชีพที่ประกอบได้หลังจบการศึกษา ได้แก่ วิศวกรระบบไอโอที (IoT Engineer), วิศวกรระบบสารสนเทศ (Information System Engineer), วิศวกรระบบสมองกลฝังตัว (Embedded System Engineer), วิศวกรซอฟต์แวร์ระบบสมองกลฝังตัว (Embedded Software Engineer), นักพัฒนาแอปพลิเคชัน (Application Developer), โปรแกรมเมอร์ (Programmer), วิศวกรซอฟต์แวร์ (Software Engineer), นักพัฒนาส่วนหน้า (Front End Developer), นักพัฒนาส่วนเบื้องหลัง (Back End Developer), นักพัฒนาฟูลสแต็ก (Full Stack Developer), วิศวกรระบบคลาวด์ (Cloud Engineer), วิศวกรระบบเครือข่าย (Network Engineer), นักวิทยาการข้อมูล (Data Scientist), วิศวกรข้อมูล (Data Engineer), ผู้ดูแลระบบ (System Administrator), นักวิจัย นักวิชาการ เจ้าของธุรกิจส่วนตัว และอาชีพอื่น ๆ ที่เกี่ยวข้องกับทางด้านคอมพิวเตอร์หรือไอที
+</p>
+</div>
+
+<!-- SECTION 2 -->
+<div id="dual" class="section-space">
+<h2>About Dual Degree</h2>
+<p>
+ครั้งแรกของประเทศไทยกับโครงการหลักสูตรปริญญาตรีสองปริญญา (Dual Degree) ระหว่างคณะวิศวกรรมศาสตร์และคณะวิทยาศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง วศ.บ. วิศวกรรมระบบไอโอทีและสารสนเทศ และ วท.บ. ฟิสิกส์อุตสาหกรรม
+</p>
+
+<p>
+ในโลกยุค Disruption ได้เปลี่ยนแปลงทุกสิ่งไปอย่างรวดเร็ว การรู้เพียงศาสตร์ใดศาสตร์หนึ่งจึงอาจไม่เพียงพอกับการต่อสู้ในยุคแห่งการเปลี่ยนแปลงนี้แล้ว โดยเฉพาะอย่างยิ่งทักษะทางดิจิทัลและเทคโนโลยีที่จำเป็นต่อโลกอันไร้พรมแดน จึงเป็นที่มาของหลักสูตร “PhysIoT” ที่ตอบสนองกับการเปลี่ยนแปลงในยุคนี้ ให้บัณฑิตมีความรู้ที่รอบด้านทั้งทางด้านวิทยาศาสตร์และวิศวกรรมศาสตร์ อันเป็นศาสตร์สำคัญที่ช่วยขับเคลื่อนพัฒนาประเทศชาติ เพื่อผลิตบัณฑิตนักฟิสิกส์ไอโอทีที่สามารถบูรณาการองค์ความรู้เพื่อสร้างนวัตกรรม ตอบโจทย์อุตสาหกรรมในยุค Thailand 4.0 อุตสาหกรรม New S-Curve รวมถึงอุตสาหกรรมแห่งอนาคต
+</p>
+
+<p>
+อาชีพที่ประกอบได้หลังจบการศึกษา ได้แก่ นักวิจัยในภาครัฐและเอกชน ผู้ประกอบการทางธุรกิจเทคโนโลยี วิศวกรไอโอที (IoT Engineer) วิศวกรซอฟต์แวร์ (Software Engineer) วิศวกรระบบสมองกลฝังตัว (Embedded Engineer) นักพัฒนาแอปพลิเคชัน (Application Developer) นักวิทยาการข้อมูล (Data Scientist) วิศวกรควบคุมคุณภาพ และวิศวกรฝ่ายวิจัยและพัฒนา
+</p>
+</div>
+
+<!-- SECTION 3 -->
+<div id="industry" class="section-space">
+<h2>About Industry Physics</h2>
+<p>
+ทำไมต้องเรียน วท.บ. ฟิสิกส์อุตสาหกรรม ที่ สจล. ? หลักสูตรฟิสิกส์อุตสาหกรรมของ สจล. มุ่งพัฒนาความรู้ ทักษะ และเทคโนโลยีต่าง ๆ ทางฟิสิกส์และการนำศาสตร์ทางฟิสิกส์ไปประยุกต์ใช้งานในอุตสาหกรรมด้านต่าง ๆ ตอบโจทย์ความต้องการของบริษัทและอุตสาหกรรม เป็นหลักสูตรที่มีความร่วมมือกับหน่วยงานอุตสาหกรรมชั้นนำของประเทศ มีการจัดการเรียนการสอนที่ให้ความรู้เทคโนโลยีด้านฟิสิกส์ที่รองรับความต้องการของอุตสาหกรรม ตัวอย่างรายวิชาที่น่าสนใจ เช่น ระบบตรวจสอบชิ้นงานด้วยภาพถ่ายแบบอัตโนมัติ การโปรแกรมภาษาไพธอนสำหรับการวิเคราะห์ข้อมูล การออกแบบและพัฒนาอุปกรณ์ระบบไอโอที ฟาร์มอัจฉริยะ การประมวลภาพทางการแพทย์ เป็นต้น
+</p>
+
+<p>
+เมื่อนักศึกษาขึ้นชั้นปีที่ 2 นักศึกษาสามารถเลือกเรียนแบบ 2 ปริญญาร่วมกับหลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศซึ่งเปิดสอนโดยคณะวิศวกรรมศาสตร์ สจล. เมื่อเรียนจบแล้วจะได้ปริญญา วท.บ. ฟิสิกส์อุตสาหกรรม และ วศ.บ. วิศวกรรมระบบไอโอทีและสารสนเทศ
+</p>
+
+<p>
+อาชีพที่ประกอบได้หลังจบการศึกษา ได้แก่ นัก STEM ศึกษา นักวิจัย วิศวกรอุตสาหการ นักวิทยาศาสตร์/วิศวกรวัสดุ วิศวกรไฟฟ้า นักวิทยาศาสตร์ทางด้านข้อมูล วิศวกรด้านแสง วิศวกรวิเคราะห์ความน่าเชื่อถือและความล้มเหลว วิศวกรกระบวนการ ผู้ประกอบการทางธุรกิจเทคโนโลยี วิศวกรควบคุมคุณภาพ และวิศวกรวิเคราะห์ความน่าเชื่อถือและการทดสอบ
+</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+window.addEventListener("scroll",function(){
+  const navbar=document.querySelector(".navbar");
+  if(window.scrollY>100){
+    navbar.classList.add("scrolled");
+  }else{
+    navbar.classList.remove("scrolled");
+  }
+});
+</script>
+
+<div id="iote-assistant-mount"></div>
+<link rel="stylesheet" href="assistant.css">
+<script src="routes.js"></script>
+<script src="knowledge-th.js"></script>
+<script src="knowledge-en.js"></script>
+<script src="assistant.js"></script>
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+function updateThemeIcon(){
+  if(document.body.classList.contains("light-mode")){
+    toggleBtn.textContent = "🌙";
+  }else{
+    toggleBtn.textContent = "☀️";
+  }
+}
+
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light-mode");
+}
+
+updateThemeIcon();
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if(document.body.classList.contains("light-mode")){
+    localStorage.setItem("theme","light");
+  }else{
+    localStorage.setItem("theme","dark");
+  }
+
+  updateThemeIcon();
+});
+</script>
+</body>
+</html>
